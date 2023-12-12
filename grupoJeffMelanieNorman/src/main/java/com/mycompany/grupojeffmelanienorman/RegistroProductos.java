@@ -177,6 +177,21 @@ public class RegistroProductos {
         System.out.println("Modificación completada: " + articulo);
     }
 
+    public void eliminar(JSONObject articulo) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Está a punto de eliminar el siguiente artículo: " + articulo);
+        System.out.println("¿Está seguro de que desea eliminarlo? (escriba 'si' para confirmar)");
+        String confirmacion = scanner.nextLine();
+
+        if (confirmacion.equalsIgnoreCase("si")) {
+            listaArticulos.remove(articulo); // Elimina el artículo de la lista
+            guardarDatos(); // Guarda los cambios en el archivo JSON
+            System.out.println("Artículo eliminado con éxito.");
+        } else {
+            System.out.println("Eliminación cancelada.");
+        }
+    }
+    
     public void buscar() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Seleccione el criterio de búsqueda:");
@@ -213,6 +228,7 @@ public class RegistroProductos {
                     break;
                 case 2:
                     // Llamada a una función para eliminar (a implementar)
+                    eliminar(encontrado);
                     break;
                 case 3:
                     // No hacer nada
