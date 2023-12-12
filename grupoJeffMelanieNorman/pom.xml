@@ -11,4 +11,13 @@
         <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>com.mycompany.grupojeffmelanienorman.GrupoJeffMelanieNorman</exec.mainClass>
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.jdatepicker</groupId>
+            <artifactId>jdatepicker</artifactId>
+            <version>1.3.4</version>
+        </dependency>
+    </dependencies>
+
 </project>
