@@ -1,4 +1,4 @@
-package com.proyecto1.registroproductos;
+package com.mycompany.grupojeffmelanienorman;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
