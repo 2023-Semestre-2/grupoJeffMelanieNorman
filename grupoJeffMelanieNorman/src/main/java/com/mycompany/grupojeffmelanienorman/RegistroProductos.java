@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class RegistroProductos {
-
+    
+    private JSONArray listaProductos;
     private JSONArray listaArticulos;
     private int ultimoCodigoArticulo;
     private static final String FILE_PATH = "Productos.json";
@@ -23,13 +24,31 @@ public class RegistroProductos {
         try {
             FileReader reader = new FileReader(FILE_PATH);
             JSONObject obj = (JSONObject) parser.parse(reader);
+
+            // Cargar la lista de productos existente sin modificarla
+            listaProductos = (JSONArray) obj.getOrDefault("Productos", new JSONArray());
+
+            // Cargar la lista de artículos, que sí se modificará durante la ejecución del programa
             listaArticulos = (JSONArray) obj.getOrDefault("Articulos", new JSONArray());
+
             actualizarUltimoCodigo(); // Actualizar el último código después de cargar los datos
         } catch (Exception e) {
             listaArticulos = new JSONArray();
+            listaProductos = new JSONArray(); // Inicializar también listaProductos en caso de error
         }
     }
-
+    
+    private void guardarDatos() {
+        try (FileWriter file = new FileWriter(FILE_PATH)) {
+            JSONObject obj = new JSONObject();
+            obj.put("Productos", listaProductos); // Incluye los productos existentes
+            obj.put("Articulos", listaArticulos); // Y los artículos
+            file.write(obj.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void actualizarUltimoCodigo() {
         if (!listaArticulos.isEmpty()) {
@@ -39,210 +58,56 @@ public class RegistroProductos {
     }
 
 
-
-
-    public void agregarArticulo() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del artículo:");
-        String nombre = scanner.nextLine();
-
-        System.out.println("Seleccione el tipo de artículo:\n1. Bicicleta\n2. Accesorios\n3. Suplementos Alimenticios");
-        int tipo = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea restante
-        String tipoArticulo = "";
-        String tamaño = "0";
-
-        switch (tipo) {
-            case 1:
-                tipoArticulo = "Bicicleta";
-                tamaño = elegirTamaño();
-                break;
-            case 2:
-                tipoArticulo = "Accesorios";
-                break;
-            case 3:
-                tipoArticulo = "Suplementos Alimenticios";
-                break;
-            default:
-                System.out.println("Tipo de artículo no válido");
-                return;
-        }
-
+    public void agregarArticulo(String nombre, String tipoArticulo, String tamano, String marca, int cantidad, int precio) {
         ultimoCodigoArticulo++;
-
-        System.out.println("Ingrese la marca del artículo:");
-        String marca = scanner.nextLine();
-
-        System.out.println("Ingrese la cantidad del artículo:");
-        int cantidad = scanner.nextInt();
-
-        System.out.println("Ingrese el precio del artículo:");
-        int precio = scanner.nextInt();
-        scanner.nextLine();
 
         JSONObject nuevoArticulo = new JSONObject();
         nuevoArticulo.put("Codigo", ultimoCodigoArticulo);
         nuevoArticulo.put("Nombre", nombre);
         nuevoArticulo.put("Tipo", tipoArticulo);
-        nuevoArticulo.put("Tamaño", tamaño);
+        nuevoArticulo.put("Tamaño", tamano);
         nuevoArticulo.put("Marca", marca);
-        nuevoArticulo.put("Cantidad", cantidad); // Añadir cantidad al objeto JSON
+        nuevoArticulo.put("Cantidad", cantidad);
         nuevoArticulo.put("Precio", precio);
 
         listaArticulos.add(nuevoArticulo);
         guardarDatos();
 
-        System.out.println("Artículo agregado con éxito: " + nuevoArticulo);
+        JOptionPane.showMessageDialog(null, "Artículo agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
     }
 
 
-    private String elegirTamaño() {
-        String[] tamaños = {"12", "16", "22", "26", "27", "27.5", "29"};
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Seleccione el tamaño de la bicicleta:");
-        for (int i = 0; i < tamaños.length; i++) {
-            System.out.println((i + 1) + ". " + tamaños[i]);
-        }
-        int eleccion = scanner.nextInt();
-        return tamaños[Math.max(0, Math.min(eleccion - 1, tamaños.length - 1))];
-    }
 
-    private void guardarDatos() {
-        try (FileWriter file = new FileWriter(FILE_PATH)) {
-            JSONObject obj = new JSONObject();
-            obj.put("Articulos", listaArticulos); // Guarda la lista de artículos
-            file.write(obj.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    private void configurarComboBoxTamanos(JComboBox<String> comboBoxTamanos) {
+        String[] tamanos = {"12", "16", "22", "26", "27", "27.5", "29"};
+        for (String tamano : tamanos) {
+            comboBoxTamanos.addItem(tamano);
         }
     }
 
-    
-    public void modificar(JSONObject articulo) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Modificando artículo: " + articulo);
-        System.out.println("Ingrese los nuevos valores (deje en blanco para no cambiar):");
-
-        // Nombre
-        System.out.println("Nombre (" + articulo.get("Nombre") + "): ");
-        String nombre = scanner.nextLine();
-        if (!nombre.isEmpty()) {
-            articulo.put("Nombre", nombre);
-        }
-        // Marca
-        System.out.println("Marca (" + articulo.get("Marca") + "): ");
-        String marca = scanner.nextLine();
-        if (!marca.isEmpty()) {
-            articulo.put("Marca", marca);
-        }
-        // Cantidad
-        System.out.println("Cantidad (" + articulo.get("Cantidad") + "): ");
-        String cantidadStr = scanner.nextLine();
-        if (!cantidadStr.isEmpty()) {
-            try {
-                int cantidad = Integer.parseInt(cantidadStr);
-                articulo.put("Cantidad", cantidad);
-            } catch (NumberFormatException e) {
-                System.out.println("Cantidad no válida, se mantiene el valor anterior.");
-            }
-        }
-        // Precio
-        System.out.println("Precio (" + articulo.get("Precio") + "): ");
-        String precioStr = scanner.nextLine();
-        if (!precioStr.isEmpty()) {
-            try {
-                int precio = Integer.parseInt(precioStr);
-                articulo.put("Precio", precio);
-            } catch (NumberFormatException e) {
-                System.out.println("Precio no válido, se mantiene el valor anterior.");
-            }
-        }
-        // Tipo
-        System.out.println("Tipo (" + articulo.get("Tipo") + "): ");
-        String tipo = scanner.nextLine();
-        if (!tipo.isEmpty()) {
-            articulo.put("Tipo", tipo);
-        }
-        // Tamaño
-        System.out.println("Tamaño (" + articulo.get("Tamaño") + "): ");
-        String tamaño = scanner.nextLine();
-        if (!tamaño.isEmpty()) {
-            articulo.put("Tamaño", tamaño);
-        }
-
-        guardarDatos(); // Guardar los cambios en el archivo JSON
-
-        System.out.println("Modificación completada: " + articulo);
-    }
-
-    public void eliminar(JSONObject articulo) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Está a punto de eliminar el siguiente artículo: " + articulo);
-        System.out.println("¿Está seguro de que desea eliminarlo? (escriba 'si' para confirmar)");
-        String confirmacion = scanner.nextLine();
-
-        if (confirmacion.equalsIgnoreCase("si")) {
-            listaArticulos.remove(articulo); // Elimina el artículo de la lista
-            guardarDatos(); // Guarda los cambios en el archivo JSON
-            System.out.println("Artículo eliminado con éxito.");
-        } else {
-            System.out.println("Eliminación cancelada.");
-        }
-    }
-    
-    public void buscar() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Seleccione el criterio de búsqueda:");
-        System.out.println("1. Por Código");
-        System.out.println("2. Por Nombre");
-        int criterioBusqueda = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
-
+   
+    public JSONObject buscar(int criterioBusqueda, String valorBusqueda) {
         JSONObject encontrado = null;
 
-        if (criterioBusqueda == 1) {
-            System.out.println("Ingrese el código del artículo:");
-            int codigo = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
-            encontrado = buscarPorCodigo(codigo, listaArticulos);
-        } else if (criterioBusqueda == 2) {
-            System.out.println("Ingrese el nombre del artículo:");
-            String nombre = scanner.nextLine();
-            encontrado = buscarPorNombre(nombre, listaArticulos);
-        }
-        if (encontrado != null) {
-            System.out.println("Artículo encontrado: " + encontrado);
-
-            // Presentar opciones al usuario
-            System.out.println("Seleccione una opción:");
-            System.out.println("1. Modificar");
-            System.out.println("2. Eliminar");
-            System.out.println("3. No hacer nada");
-            int eleccion = scanner.nextInt();
-
-            switch (eleccion) {
-                case 1:
-                    modificar(encontrado); //Le paso "encontrado" que es el articulo a modificar
-                    break;
-                case 2:
-                    // Llamada a una función para eliminar (a implementar)
-                    eliminar(encontrado);
-                    break;
-                case 3:
-                    // No hacer nada
-                    break;
-                default:
-                    System.out.println("Opción no válida.");
+        if (criterioBusqueda == 1) { // Búsqueda por código
+            try {
+                int codigo = Integer.parseInt(valorBusqueda);
+                encontrado = buscarPorCodigo(codigo, listaArticulos);
+            } catch (NumberFormatException e) {
+                // Manejar el caso en que valorBusqueda no es un número válido
             }
-        } else {
-            System.out.println("No se encontró el artículo con el código proporcionado.");
+        } else if (criterioBusqueda == 2) { // Búsqueda por nombre
+            encontrado = buscarPorNombre(valorBusqueda, listaArticulos);
         }
+
+        return encontrado;
     }
+
     
-    private JSONObject buscarPorCodigo(int codigo, JSONArray lista) {
-        for (Object item : lista) {
+    
+    private JSONObject buscarPorCodigo(int codigo) {
+        for (Object item : listaArticulos) {
             JSONObject obj = (JSONObject) item;
             if (((Number) obj.get("Codigo")).intValue() == codigo) {
                 return obj;
@@ -250,9 +115,10 @@ public class RegistroProductos {
         }
         return null;
     }
+
     
-    private JSONObject buscarPorNombre(String nombre, JSONArray lista) {
-        for (Object item : lista) {
+    private JSONObject buscarPorNombre(String nombre) {
+        for (Object item : listaArticulos) {
             JSONObject obj = (JSONObject) item;
             if (obj.get("Nombre").toString().equalsIgnoreCase(nombre)) {
                 return obj;
@@ -261,9 +127,35 @@ public class RegistroProductos {
         return null;
     }
 
-   
+    
+    public void modificar(JSONObject articulo, String nombre, String marca, int cantidad, int precio, String tipo, String tamano) {
+        if (nombre != null && !nombre.isEmpty()) {
+            articulo.put("Nombre", nombre);
+        }
+        if (marca != null && !marca.isEmpty()) {
+            articulo.put("Marca", marca);
+        }
+        // Asumiendo que 'cantidad' y 'precio' son valores que siempre se actualizarán
+        articulo.put("Cantidad", cantidad);
+        articulo.put("Precio", precio);
+        if (tipo != null && !tipo.isEmpty()) {
+            articulo.put("Tipo", tipo);
+        }
+        if (tamano != null && !tamano.isEmpty()) {
+            articulo.put("Tamaño", tamano);
+        }
 
-    public static void main(String[] args) {
+        guardarDatos(); // Guardar los cambios en el archivo JSON
+    }
+    
+    
+    public void eliminar(JSONObject articulo) {
+        listaArticulos.remove(articulo); // Elimina el artículo de la lista
+        guardarDatos(); // Guarda los cambios en el archivo JSON
+    }
+   
+    
+    /*public static void main(String[] args) {
         RegistroProductos registro = new RegistroProductos();
         Scanner scanner = new Scanner(System.in);
 
@@ -290,5 +182,5 @@ public class RegistroProductos {
                     System.out.println("Opción no válida. Por favor intente nuevamente.");
             }
         }
-    }
+    }*/
 }
