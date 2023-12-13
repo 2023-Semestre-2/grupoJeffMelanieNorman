@@ -44,31 +44,37 @@ public class AccModifier {
      * @return La lista de objetos ControlDeAcceso leídos del archivo.
      */
     public static ArrayList<ControlDeAcceso> leerArchivoAcc() {
-        RandomAccessFile raf = null;
+        RandomAccessFile raf;
         ArrayList<ControlDeAcceso> usuarios = new ArrayList<ControlDeAcceso>();
         try {
+            System.out.println("Leyendo archivo " + fileName);
             raf = new RandomAccessFile(fileName, "r");
-            byte[] signatureRead = new byte[4];
-            raf.read(signatureRead);
-            String hexSignature = bytesToHex(signatureRead);
-            if (hexSignature.equals("41434331")) {
-                String text = raf.readUTF();
-                String[] lines = text.split(" ");
-                for (String line : lines) {
-                    String[] fields = line.split(",");
-                    String nombre = fields[0];
-                    String contraseña = fields[1];
-                    ControlDeAcceso usuario = new ControlDeAcceso(nombre, contraseña);
-                    usuarios.add(usuario);
+            System.out.println("Archivo abierto");
+    
+            StringBuilder sb = new StringBuilder();
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = raf.read(buffer)) != -1) {
+                for (int i = 0; i < bytesRead; i++) {
+                    sb.append((char) buffer[i]);
                 }
-            } else {
-                System.out.println("El archivo no es un archivo de usuarios y contraseñas");
             }
-            raf.close();
+            String text = sb.toString();
+    
+            String[] usuariosTexto = text.split(" ");
+            for (String usuarioTexto : usuariosTexto) {
+                String[] datos = usuarioTexto.split(",");
+                String nombre = datos[0];
+                String contraseña = datos[1];
+                ControlDeAcceso usuario = new ControlDeAcceso(nombre, contraseña);
+                usuarios.add(usuario);
+            }
+    
         } catch (IOException e) {
-            // Ocurrió un error al leer el archivo
+            System.out.println("Error al leer el archivo");
             e.printStackTrace();
         }
+    
         return usuarios;
     }
 
