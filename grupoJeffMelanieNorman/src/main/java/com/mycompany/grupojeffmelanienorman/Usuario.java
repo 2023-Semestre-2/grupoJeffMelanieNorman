@@ -3,25 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.grupojeffmelanienorman;
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.StringBuilder;
 
 /**
  *
  * @author XPC
  */
-public class ControlDeAcceso {
+public class Usuario {
     // Atributos
     private String user;
     private String password;
     
 
     // Constructor
-    public ControlDeAcceso(String user, String password) {
+    public Usuario(String user, String password) {
         this.user = user;
         this.password = password;
     }
