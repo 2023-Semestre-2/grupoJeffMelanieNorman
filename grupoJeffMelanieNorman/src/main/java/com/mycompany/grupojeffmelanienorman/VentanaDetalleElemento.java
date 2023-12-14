@@ -10,8 +10,14 @@ package com.mycompany.grupojeffmelanienorman;
  */
 public class VentanaDetalleElemento extends javax.swing.JFrame {
 
+    // Atributos
     private String elementoSeleccionado;
 
+    /**
+     * Constructor de la clase VentanaDetalleElemento.
+     * 
+     * @param elemento el elemento seleccionado
+     */
     public VentanaDetalleElemento(String elemento) {
         this.elementoSeleccionado = elemento;
         initComponents();
@@ -67,15 +73,34 @@ public class VentanaDetalleElemento extends javax.swing.JFrame {
         pack();
     }
 
+    /**
+     * Método que se ejecuta cuando se presiona el botón "Modificar".
+     * Realiza la acción de modificar el elemento seleccionado.
+     * Imprime en la consola el mensaje "Modificar" seguido del elemento seleccionado.
+     * 
+     * @param evt el evento de acción generado por el botón
+     */
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {
         // Aquí el código para modificar el elemento
         System.out.println("Modificar " + elementoSeleccionado);
     }
+
+    /**
+     * Abre una ventana para modificar un producto.
+     * 
+     * @param elemento el elemento a modificar
+     */
     public void abrirVentanaModificarProducto(String elemento) {
         VentanaModificarProducto ventana = new VentanaModificarProducto(elemento);
         ventana.setVisible(true);
     }
 
+    /**
+     * Método que se ejecuta cuando se presiona el botón "Eliminar".
+     * Abre la ventana para modificar el producto seleccionado y muestra un mensaje en la consola.
+     * 
+     * @param evt El evento de acción generado por el botón.
+     */
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {
         // Aquí el código para eliminar el elemento
         abrirVentanaModificarProducto(elementoSeleccionado);
