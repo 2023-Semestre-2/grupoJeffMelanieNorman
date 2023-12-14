@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileReader;
 
+// Clase para leer el archivo de acceso
 public class AccReader {
 
+    // Atributos
     private static final String fileName = "usuarios.acc";
     private ArrayList<Usuario> usuarios;
 
@@ -86,6 +88,11 @@ public class AccReader {
         return -1;
     }
 
+    /**
+     * Establece la lista de usuarios.
+     * 
+     * @param usuarios la lista de usuarios a establecer
+     */
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = leerArchivoAcc();
     }
@@ -104,23 +111,13 @@ public class AccReader {
         return sb.toString();
     }
 
+    /**
+     * Devuelve la lista de usuarios.
+     * 
+     * @return la lista de usuarios
+     */
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
-    }
-
-    public static void main(String[] args) {
-        ArrayList<Usuario> usuarios = leerArchivoAcc();
-        for (Usuario usuario : usuarios) {
-            System.out.println("User: "+usuario.getUser() + "\nPassword: " + usuario.getPassword());
-        }
-        boolean inicioCorrecto = verificarInicio(usuarios, "Jeff", "1234");
-        System.out.println("Inicio de sesión con el usuario Jeff y la contraseña 1234: " + inicioCorrecto);
-        inicioCorrecto = verificarInicio(usuarios, "Jana", "1711");
-        System.out.println("Inicio de sesión con el usuario Jana y la contraseña 1711: " + inicioCorrecto);
-        boolean inicioIncorrecto = verificarInicio(usuarios, "Jeffry", "1234");
-        System.out.println("Inicio de sesión con el usuario Jeffry y la contraseña 1234: " + inicioIncorrecto);
-        inicioIncorrecto = verificarInicio(usuarios, "Jeff", "12345");
-        System.out.println("Inicio de sesión con el usuario Jeff y la contraseña 12345: " + inicioIncorrecto);
     }
 }
 
