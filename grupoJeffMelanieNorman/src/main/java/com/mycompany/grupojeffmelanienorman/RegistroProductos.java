@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 public class RegistroProductos {
     // Atributos
@@ -171,11 +172,6 @@ public class RegistroProductos {
 
         return encontrado;
     }
-
-    
-    
-    
-
     
     /**
      * Modifica los atributos de un artículo en el registro de productos.
@@ -210,8 +206,7 @@ public class RegistroProductos {
 
         guardarDatos(); // Guardar los cambios en el archivo JSON
     }
-    
-    
+
     /**
      * Elimina un artículo de la lista y guarda los cambios en el archivo JSON.
      * 
@@ -221,8 +216,7 @@ public class RegistroProductos {
         listaArticulos.remove(articulo); // Elimina el artículo de la lista
         guardarDatos(); // Guarda los cambios en el archivo JSON
     }
-   
-    
+        
     /*public static void main(String[] args) {
         RegistroProductos registro = new RegistroProductos();
         Scanner scanner = new Scanner(System.in);
