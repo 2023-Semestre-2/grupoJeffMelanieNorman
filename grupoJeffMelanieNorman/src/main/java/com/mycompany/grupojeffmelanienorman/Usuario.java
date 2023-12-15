@@ -55,16 +55,4 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    /**
-     * Comprueba si el usuario y la contraseña son correctos.
-     * 
-     * @param user el usuario a comprobar
-     * @param password la contraseña a comprobar
-     * @return true si el usuario y la contraseña son correctos, false en caso
-     * contrario
-     */
-    public boolean check(String user, String password) {
-        return this.user.equals(user) && this.password.equals(password);
-    }
 }

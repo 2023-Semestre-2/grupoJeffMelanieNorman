@@ -119,5 +119,42 @@ public class AccReader {
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
+
+    /**
+     * Verifica si un usuario existe en la lista de usuarios.
+     * 
+     * @param nombre del usuario a verificar
+     * @return true si el usuario existe, false de lo contrario
+     */
+    public boolean existeUsuario(String nombre) {
+        int indice = buscarUsuario(usuarios, nombre);
+        if (indice != -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Verifica si el nombre de usuario y la contraseña proporcionados coinciden con los datos almacenados en la lista de usuarios.
+     * 
+     * @param nombre el nombre de usuario a verificar
+     * @param contraseña la contraseña a verificar
+     * @return true si el nombre de usuario y la contraseña coinciden, false de lo contrario
+     */
+    public boolean verificarInicio(String nombre, String contraseña) {
+        int indice = buscarUsuario(usuarios, nombre);
+        if (indice != -1) {
+            Usuario usuario = usuarios.get(indice);
+            String contraseñaGuardada = usuario.getPassword();
+            if (contraseña.equals(contraseñaGuardada)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
 
