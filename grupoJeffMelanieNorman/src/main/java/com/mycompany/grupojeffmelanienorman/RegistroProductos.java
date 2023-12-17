@@ -85,11 +85,15 @@ public class RegistroProductos {
      * @param cantidad la cantidad disponible del artículo
      * @param precio el precio del artículo
      */
-    public void agregarArticulo(String nombre, String tipoArticulo, String tamano, String marca, int cantidad, int precio) {
+    public JSONObject agregarArticulo(String nombre, String tipoArticulo, String tamano, String marca, int cantidad, int precio) {
         ultimoCodigoArticulo++;
+
+        // Usar el nuevo método para obtener el código del tipo de producto desde JSON
+        int codigoTipoProducto = obtenerCodigoTipoProductoDesdeJson(tipoArticulo);
 
         JSONObject nuevoArticulo = new JSONObject();
         nuevoArticulo.put("Codigo", ultimoCodigoArticulo);
+        nuevoArticulo.put("Codigo Tipo", codigoTipoProducto); // Agregar código del tipo de producto
         nuevoArticulo.put("Nombre", nombre);
         nuevoArticulo.put("Tipo", tipoArticulo);
         nuevoArticulo.put("Tamaño", tamano);
@@ -100,8 +104,9 @@ public class RegistroProductos {
         listaArticulos.add(nuevoArticulo);
         guardarDatos();
 
-        JOptionPane.showMessageDialog(null, "Artículo agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        return nuevoArticulo; // Retorna el artículo recién creado
     }
+    
 
     /**
     * Busca un objeto JSONObject en la lista de artículos por su código.
@@ -136,6 +141,26 @@ public class RegistroProductos {
         return null;
     }
 
+    private int obtenerCodigoTipoProductoDesdeJson(String tipoArticulo) {
+        JSONParser parser = new JSONParser();
+        try {
+            FileReader reader = new FileReader(FILE_PATH);
+            JSONObject obj = (JSONObject) parser.parse(reader);
+            JSONArray listaProductos = (JSONArray) obj.get("Productos");
+
+            for (Object item : listaProductos) {
+                JSONObject producto = (JSONObject) item;
+                String nombreProducto = (String) producto.get("Nombre");
+                if (nombreProducto.equalsIgnoreCase(tipoArticulo)) {
+                    return ((Long) producto.get("Codigo")).intValue();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Manejar la excepción adecuadamente
+        }
+        return 0; // Retorna un código por defecto o para tipos no reconocidos
+    }
 
     /**
      * Configura el JComboBox de tamaños con los valores proporcionados.
