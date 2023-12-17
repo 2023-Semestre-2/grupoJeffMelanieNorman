@@ -16,7 +16,7 @@ public class Mantenimiento {
     private String descripcion;
     private String fechaSalida;
     private String fechaIngreso;
-    private boolean estado;
+    private boolean estado = false;
     private String marca;
 
     // Constructor
