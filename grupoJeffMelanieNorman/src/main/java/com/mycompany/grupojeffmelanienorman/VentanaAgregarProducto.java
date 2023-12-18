@@ -4,9 +4,9 @@
  */
 package com.mycompany.grupojeffmelanienorman;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import javax.swing.AbstractAction;
 /**
  *
  * @author Melanie
@@ -28,8 +28,20 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
                     jLabel4.setVisible(false);
                     jComboBox2.setVisible(false);
                 }
-        }
-    });
+            }
+        });
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String nombre = jTextField1.getText();
+                String tipoArticulo = (String) jComboBox1.getSelectedItem();
+                String tamano = (String) jComboBox2.getSelectedItem();
+                String marca = jTextField2.getText();
+                int cantidad = Integer.parseInt(jTextField4.getText());
+                int precio = Integer.parseInt(jTextField3.getText());
+                RegistroProductos registro = new RegistroProductos();
+                registro.agregarArticulo(nombre, tipoArticulo, tamano, marca, precio, cantidad);
+            }
+        });
     }
 
     /**

@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 
 public class RegistroProductos {
     // Atributos
-    private JSONArray listaProductos;
-    private JSONArray listaArticulos;
+    public JSONArray listaProductos;
+    public JSONArray listaArticulos;
     private int ultimoCodigoArticulo;
     private static final String FILE_PATH = "Productos.json";
     
@@ -96,7 +96,9 @@ public class RegistroProductos {
         nuevoArticulo.put("Codigo Tipo", codigoTipoProducto); // Agregar código del tipo de producto
         nuevoArticulo.put("Nombre", nombre);
         nuevoArticulo.put("Tipo", tipoArticulo);
-        nuevoArticulo.put("Tamaño", tamano);
+        if(tipoArticulo.equals("Bicicleta")){
+            nuevoArticulo.put("Tamaño", tamano);
+        }
         nuevoArticulo.put("Marca", marca);
         nuevoArticulo.put("Cantidad", cantidad);
         nuevoArticulo.put("Precio", precio);
