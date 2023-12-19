@@ -32,10 +32,10 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
         });
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String nombre = jTextField1.getText();
+                String nombre = jTextField1.getText().trim();
                 String tipoArticulo = (String) jComboBox1.getSelectedItem();
                 String tamano = (String) jComboBox2.getSelectedItem();
-                String marca = jTextField2.getText();
+                String marca = jTextField2.getText().trim();
                 int cantidad = Integer.parseInt(jTextField4.getText());
                 int precio = Integer.parseInt(jTextField3.getText());
                 RegistroProductos registro = new RegistroProductos();

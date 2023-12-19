@@ -14,7 +14,9 @@ public class AccReader {
     // Atributos
     private static final String fileName = "grupoJeffMelanieNorman/usuarios.acc";
     private ArrayList<Usuario> usuarios;
-
+    public AccReader(){
+        usuarios=leerArchivoAcc();
+    }
     /**
      * Lee un archivo de acceso y devuelve una lista de objetos Usuario.
      * 

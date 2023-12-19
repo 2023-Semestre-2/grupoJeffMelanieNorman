@@ -48,8 +48,13 @@ public class VentanaControlDeAcceso extends javax.swing.JFrame {
 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();
-                ventana.setVisible(true);
+                AccReader reader=new AccReader();
+                String nombre=jTextField1.getText();
+                String password= new String(jPasswordField1.getPassword());
+                if(reader.verificarInicio(nombre, password)){
+                    VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();
+                    ventana.setVisible(true);
+                }
             }
         });
 
