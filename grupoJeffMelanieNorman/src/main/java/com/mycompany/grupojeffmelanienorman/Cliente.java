@@ -16,12 +16,13 @@ public class Cliente {
     private String provincia;
     private String canton;
     private String distrito;
-    private String telefono; // largo de solo 8 dígitos, los dígitos a iniciar son 2, 4, 6 y 8 (ejemplo: 2222-2222)
+    private String telefono; 
     private String email;
     private String fechaDeNacimiento;
 
     // Constructor
     public Cliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento) {
+        this.idCliente = idCliente;
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -177,5 +178,13 @@ public class Cliente {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
 
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    
+    
 }

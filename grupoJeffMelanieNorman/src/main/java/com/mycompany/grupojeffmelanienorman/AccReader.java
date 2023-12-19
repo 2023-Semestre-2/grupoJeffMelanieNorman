@@ -12,7 +12,7 @@ import java.io.FileReader;
 public class AccReader {
 
     // Atributos
-    private static final String fileName = "usuarios.acc";
+    private static final String fileName = "grupoJeffMelanieNorman/usuarios.acc";
     private ArrayList<Usuario> usuarios;
 
     /**
@@ -54,7 +54,7 @@ public class AccReader {
      * @param contraseña la contraseña a verificar
      * @return true si el nombre de usuario y la contraseña coinciden, false de lo contrario
      */
-    public static boolean verificarInicio(ArrayList<Usuario> usuarios, String nombre, String contraseña) {
+    public boolean verificarInicio(ArrayList<Usuario> usuarios, String nombre, String contraseña) {
         int indice = buscarUsuario(usuarios, nombre);
         if (indice != -1) {
             Usuario usuario = usuarios.get(indice);
@@ -76,7 +76,7 @@ public class AccReader {
      * @param nombre El nombre del usuario a buscar.
      * @return El índice del usuario en la lista, o -1 si no se encuentra.
      */
-    private static int buscarUsuario(ArrayList<Usuario> usuarios, String nombre) {
+    private int buscarUsuario(ArrayList<Usuario> usuarios, String nombre) {
         int numUsuarios = usuarios.size();
         for (int i = 0; i < numUsuarios; i++) {
             Usuario usuario = usuarios.get(i);
@@ -103,7 +103,7 @@ public class AccReader {
      * @param bytes el arreglo de bytes a convertir
      * @return la cadena hexadecimal resultante
      */
-    public static String bytesToHex(byte[] bytes) {
+    public String bytesToHex(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {
             sb.append(String.format("%02X", b));
