@@ -47,25 +47,6 @@ public class AccReader {
     }
 
     /**
-     * Verifica si el nombre de usuario y la contraseña proporcionados coinciden con los datos almacenados en la lista de usuarios.
-     * 
-     * @param usuarios la lista de usuarios registrados
-     * @param nombre el nombre de usuario a verificar
-     * @param contraseña la contraseña a verificar
-     * @return true si el nombre de usuario y la contraseña coinciden, false de lo contrario
-     */
-    public boolean verificarInicio(ArrayList<Usuario> usuarios, String nombre, String contraseña) {
-        int indice = buscarUsuario(usuarios, nombre);
-        if (indice != -1) {
-            Usuario usuario = usuarios.get(indice);
-            String contraseñaGuardada = usuario.getPassword();
-            return contraseña.equals(contraseñaGuardada);
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * Busca un usuario en la lista de usuarios y devuelve su índice.
      * 
      * @param usuarios La lista de usuarios.
