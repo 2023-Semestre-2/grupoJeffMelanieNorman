@@ -4,6 +4,9 @@
  */
 package com.mycompany.grupojeffmelanienorman;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Melanie
@@ -15,6 +18,13 @@ public class VentanaServicioMantenimiento extends javax.swing.JFrame {
      */
     public VentanaServicioMantenimiento() {
         initComponents();
+        jButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VentanaAgregarServicio ventana=new VentanaAgregarServicio();
+                ventana.setVisible(true);
+                
+            }
+        });
     }
 
     /**
@@ -32,7 +42,7 @@ public class VentanaServicioMantenimiento extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Servicio de Mantenimiento");
 

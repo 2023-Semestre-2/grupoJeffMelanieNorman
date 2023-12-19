@@ -161,7 +161,7 @@ public class VentanaProductos extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             new VentanaAgregarProducto().setVisible(true);
-            dispose();
+            
         }
     };
     public static void main(String args[]) {

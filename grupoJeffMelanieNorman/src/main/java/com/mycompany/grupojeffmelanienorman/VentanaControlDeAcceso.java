@@ -6,6 +6,7 @@ package com.mycompany.grupojeffmelanienorman;
 
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Action;
 
 /**
@@ -44,6 +45,13 @@ public class VentanaControlDeAcceso extends javax.swing.JFrame {
         jLabel1.setText("Contraseña");
 
         jButton1.setText("Ingresar");
+
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();
+                ventana.setVisible(true);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,7 +147,8 @@ public class VentanaControlDeAcceso extends javax.swing.JFrame {
     Action abrirVentana = new AbstractAction("Abrir Ventana") {
         @Override
         public void actionPerformed(ActionEvent e) {
-            new VentanaCrearUsuario().setVisible(true);
+            VentanaCrearUsuario ventana= new VentanaCrearUsuario();
+            ventana.setVisible(true);
             dispose();
         }
     };
