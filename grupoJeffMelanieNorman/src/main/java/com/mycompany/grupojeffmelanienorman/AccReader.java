@@ -105,11 +105,7 @@ public class AccReader {
      */
     public boolean existeUsuario(String nombre) {
         int indice = buscarUsuario(usuarios, nombre);
-        if (indice != -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return indice != -1;
     }
 
     /**
