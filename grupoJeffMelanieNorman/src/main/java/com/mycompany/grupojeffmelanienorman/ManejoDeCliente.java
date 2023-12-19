@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author XPC
+ * @author Jeffry
  */
 public class ManejoDeCliente {
     // Atributos

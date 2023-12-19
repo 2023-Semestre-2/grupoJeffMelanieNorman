@@ -6,7 +6,7 @@ package com.mycompany.grupojeffmelanienorman;
 
 /**
  *
- * @author XPC
+ * @author Jeffry
  */
 public class Cliente {
     // Atributos
