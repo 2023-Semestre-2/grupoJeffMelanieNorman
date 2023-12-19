@@ -59,11 +59,7 @@ public class AccReader {
         if (indice != -1) {
             Usuario usuario = usuarios.get(indice);
             String contraseñaGuardada = usuario.getPassword();
-            if (contraseña.equals(contraseñaGuardada)) {
-                return true;
-            } else {
-                return false;
-            }
+            return contraseña.equals(contraseñaGuardada);
         } else {
             return false;
         }
@@ -147,11 +143,7 @@ public class AccReader {
         if (indice != -1) {
             Usuario usuario = usuarios.get(indice);
             String contraseñaGuardada = usuario.getPassword();
-            if (contraseña.equals(contraseñaGuardada)) {
-                return true;
-            } else {
-                return false;
-            }
+            return contraseña.equals(contraseñaGuardada);
         } else {
             return false;
         }
