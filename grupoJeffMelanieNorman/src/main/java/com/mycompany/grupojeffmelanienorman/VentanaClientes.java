@@ -4,7 +4,8 @@
  */
 package com.mycompany.grupojeffmelanienorman;
 
-import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -17,6 +18,13 @@ public class VentanaClientes extends javax.swing.JFrame {
      */
     public VentanaClientes() {
         initComponents();
+        jButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VentanaCrearUsuario ventana=new VentanaCrearUsuario();
+                ventana.setVisible(true);
+                
+            }
+        });
     }
 
     /**
@@ -35,7 +43,7 @@ public class VentanaClientes extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Registro Clientes");
 
