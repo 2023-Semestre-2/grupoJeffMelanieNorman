@@ -238,7 +238,7 @@ public class RegistroProductos {
         if (tipo != null && !tipo.isEmpty()) {
             articulo.put("Tipo", tipo);
         }
-        if (tamano != null && !tamano.isEmpty()) {
+        if (tipo.equals("Bicileta") && tamano != null && !tamano.isEmpty()) {
             articulo.put("Tamaño", tamano);
         }
 

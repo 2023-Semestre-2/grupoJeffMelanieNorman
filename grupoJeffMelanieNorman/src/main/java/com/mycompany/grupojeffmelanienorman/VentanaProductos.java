@@ -22,7 +22,9 @@ public class VentanaProductos extends javax.swing.JFrame {
     /**
      * Creates new form VentanaProductos
      */
+    JSONObject articuloSeleccionado;
     public VentanaProductos() {
+        articuloSeleccionado=null;
         initComponents();
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -84,7 +86,7 @@ public class VentanaProductos extends javax.swing.JFrame {
                 JSONObject selectedArticulo = mapArticulos.get(selectedName);
 
                 if (selectedArticulo != null) {
-                    // Aquí tienes el JSONObject seleccionado y puedes trabajar con él
+                    articuloSeleccionado=selectedArticulo;
                 }
             }
         });

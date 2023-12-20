@@ -8,6 +8,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,13 +49,19 @@ public class VentanaControlDeAcceso extends javax.swing.JFrame {
 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                AccReader reader=new AccReader();
                 String nombre=jTextField1.getText();
                 String password= new String(jPasswordField1.getPassword());
-                if(reader.verificarInicio(nombre, password)){
-                    VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();
-                    ventana.setVisible(true);
-                }
+                VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();
+                ventana.setVisible(true);
+                /*try{
+                    AccReader reader=new AccReader();
+                    if(reader.verificarInicio(nombre, password)){
+                        VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();
+                        ventana.setVisible(true);
+                    }
+                }catch(Exception E){
+                    JOptionPane.showMessageDialog(null, "No existen usuarios. Agregar archivo de usuarios.", "Error", JOptionPane.ERROR_MESSAGE);
+                }   */
             }
         });
 
