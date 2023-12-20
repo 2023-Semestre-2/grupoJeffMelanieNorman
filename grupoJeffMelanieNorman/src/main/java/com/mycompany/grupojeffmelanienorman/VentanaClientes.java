@@ -6,23 +6,77 @@ package com.mycompany.grupojeffmelanienorman;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Melanie
  */
 public class VentanaClientes extends javax.swing.JFrame {
-
+    Map<String, Cliente> mapClientes;
+    Cliente clienteActual;
     /**
      * Creates new form VentanaClientes
      */
     public VentanaClientes() {
+        clienteActual=null;
         initComponents();
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VentanaCrearUsuario ventana=new VentanaCrearUsuario();
                 ventana.setVisible(true);
                 
+            }
+        });
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jButton3.setVisible(true);
+                        jButton4.setVisible(true);
+                String selectedInfo = (String) jComboBox1.getSelectedItem();
+                if(mapClientes!=null){
+                    Cliente selectedCliente = mapClientes.get(selectedInfo);
+                    if(selectedCliente != null) {
+                        clienteActual=selectedCliente;
+                        jButton3.setVisible(true);
+                        jButton4.setVisible(true);
+                    }
+                }
+            }
+        });
+        jButton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(clienteActual!=null){
+                    VentanaModificarCliente ventana=new VentanaModificarCliente(clienteActual);
+                    ventana.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar un cliente.", "Error.", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }
+        });
+        jButton4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(clienteActual!=null){
+                    String mensaje="Desea eliminar al cliente: "+clienteActual.getNombre()+", codigo: "+String.valueOf(clienteActual.getIdCliente())+"?";
+                    int opcion=JOptionPane.showConfirmDialog(null, mensaje, "Confirmacion de eliminar.", JOptionPane.YES_NO_OPTION);
+                    if(opcion==JOptionPane.YES_OPTION){
+                        ManejoDeCliente manejo=new ManejoDeCliente();
+                        manejo.eliminarCliente(clienteActual.getIdCliente());
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Cancelado.", "Cancelado.", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar un cliente.", "Error.", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        jComboBox1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                jButton3.setVisible(false);
+                jButton4.setVisible(false);
             }
         });
     }
@@ -40,6 +94,8 @@ public class VentanaClientes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,6 +106,33 @@ public class VentanaClientes extends javax.swing.JFrame {
         jButton2.setText("Agregar");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton3.setText("Modificar");
+        jButton3.setVisible(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Eliminar");
+        jButton4.setVisible(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        ManejoDeCliente manejoClientes = new ManejoDeCliente();
+        ArrayList<Cliente> clientes = manejoClientes.getClientes(); // Asumiendo que hay un método getClientes
+        if(mapClientes!=null){
+            mapClientes.clear();
+            for(Cliente cliente : clientes) {
+                String clienteInfo = cliente.getIdCliente() + " - " + cliente.getNombre();
+                jComboBox1.addItem(clienteInfo);
+                mapClientes.put(clienteInfo, cliente);
+            }
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,7 +147,12 @@ public class VentanaClientes extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(86, 86, 86)
+                                .addComponent(jButton4))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
                         .addGap(0, 43, Short.MAX_VALUE)))
@@ -82,11 +170,23 @@ public class VentanaClientes extends javax.swing.JFrame {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1)))
                     .addComponent(jButton2))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +227,8 @@ public class VentanaClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

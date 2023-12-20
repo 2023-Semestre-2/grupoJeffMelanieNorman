@@ -11,9 +11,14 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
-import javax.swing.JComboBox;
+import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+//import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -100,20 +105,76 @@ public class ManejoDeCliente {
      * @param email
      * @param fechaDeNacimiento
      */
-    public void modificarCliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
-        for(int i = 0; i < clientes.size(); i++){
-            if(clientes.get(i).getIdCliente() == idCliente){
-                clientes.get(i).setNombre(nombre);
-                clientes.get(i).setApellido(apellido);
-                clientes.get(i).setProvincia(provincia);
-                clientes.get(i).setCanton(canton);
-                clientes.get(i).setDistrito(distrito);
-                clientes.get(i).setTelefono(telefono);
-                clientes.get(i).setEmail(email);
-                clientes.get(i).setFechaDeNacimiento(fechaDeNacimiento);
-                guardarDatos();
-                break;
+    public int largo(String numero){
+        int cont=0;
+        for (int i = 0; i < numero.length(); i++) {
+            if (Character.isDigit(numero.charAt(i))) {
+                cont++;
             }
+        }
+        return cont;
+    }
+    public String obtenerNumero(String numero){
+        String cont="";
+        for (int i = 0; i < numero.length(); i++) {
+            if (Character.isDigit(numero.charAt(i))) {
+                cont+=numero.charAt(i);
+            }
+        }
+        return cont;
+    }
+    public boolean telefonoValido(String num){
+        int primerDigito = Character.getNumericValue(num.charAt(0));
+        return largo(num)==8 && (primerDigito==2 || primerDigito==4 || primerDigito==6 || primerDigito==8);
+    }
+    public boolean correoValido(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    public static boolean fechaValida(String fecha) {
+        String fechaRegex = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(fechaRegex);
+        Matcher matcher = pattern.matcher(fecha);
+        if (!matcher.matches()) {
+            return false;
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false); 
+        try {
+            dateFormat.parse(fecha);
+            return true; 
+        } catch (ParseException e) {
+            return false; 
+        }
+    }
+    public void modificarCliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
+        if(telefonoValido(telefono)){
+            if(correoValido(email)){
+                for(int i = 0; i < clientes.size(); i++){
+                    if(clientes.get(i).getIdCliente() == idCliente){
+                        clientes.get(i).setNombre(nombre);
+                        clientes.get(i).setApellido(apellido);
+                        clientes.get(i).setProvincia(provincia);
+                        clientes.get(i).setCanton(canton);
+                        clientes.get(i).setDistrito(distrito);
+                        clientes.get(i).setTelefono(telefono);
+                        clientes.get(i).setEmail(email);
+                        clientes.get(i).setFechaDeNacimiento(fechaDeNacimiento);
+                        guardarDatos();
+                        break;
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Debe ingresar un correo electronico valido.", "Error.", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero telefonico valido.", "Error.", JOptionPane.ERROR_MESSAGE);
         }
     }
 

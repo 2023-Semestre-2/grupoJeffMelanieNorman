@@ -26,7 +26,31 @@ public class VentanaServicioMantenimiento extends javax.swing.JFrame {
             }
         });
     }
+/* RegistroProductos registro = new RegistroProductos();
+        JSONArray listaArticulos = registro.listaArticulos; // Asumiendo que hay un getter para obtener el JSONArray
+        Map<String, JSONObject> mapArticulos = new HashMap<>();
 
+        for (Object item : listaArticulos) {
+            JSONObject articulo = (JSONObject) item;
+            String nombreArticulo = articulo.get("Nombre").toString();
+            jComboBox1.addItem(nombreArticulo);
+
+            mapArticulos.put(nombreArticulo, articulo);
+        }
+
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jButton3.setVisible(true);
+                jButton4.setVisible(true);
+                String selectedName = (String) jComboBox1.getSelectedItem();
+
+                JSONObject selectedArticulo = mapArticulos.get(selectedName);
+
+                if (selectedArticulo != null) {
+                    articuloSeleccionado=selectedArticulo;
+                }
+            }
+        });*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

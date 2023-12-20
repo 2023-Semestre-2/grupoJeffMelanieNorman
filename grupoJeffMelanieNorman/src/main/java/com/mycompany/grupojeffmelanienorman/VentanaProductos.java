@@ -32,6 +32,12 @@ public class VentanaProductos extends javax.swing.JFrame {
                 new VentanaAgregarProducto();
             }
         });
+        jComboBox1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                jButton3.setVisible(false);
+                jButton4.setVisible(false);
+            }
+        });
     }
 
     /**
@@ -94,7 +100,11 @@ public class VentanaProductos extends javax.swing.JFrame {
         jButton3.setVisible(false);
         jButton3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new VentanaModificarProducto(articuloSeleccionado);
+                if(articuloSeleccionado!=null){
+                    new VentanaModificarProducto(articuloSeleccionado);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar un producto.", "Error.", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         jButton4.setVisible(false);
