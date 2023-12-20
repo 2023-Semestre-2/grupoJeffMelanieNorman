@@ -53,8 +53,6 @@ public class Mantenimiento {
     
     
     
-    
-    
     public String buscarClientePorCodigo(int codigoCliente) {
         JSONParser parser = new JSONParser();
         try {
@@ -138,7 +136,7 @@ public class Mantenimiento {
         return encontrado;
     }
 
-    public void modificarServicio(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
+    public void modificar(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         servicio.put("Marca Bicicleta", marcaBicicleta.trim());
         servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
         servicio.put("Precio", precio);
