@@ -136,7 +136,7 @@ public class Mantenimiento {
         return encontrado;
     }
 
-    public void modificarServicios(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
+    public void modificar(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         servicio.put("Marca Bicicleta", marcaBicicleta.trim());
         servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
         servicio.put("Precio", precio);
@@ -149,7 +149,7 @@ public class Mantenimiento {
     }
     
     
-    public void eliminarServicios(JSONObject servicio) {
+    public void eliminar(JSONObject servicio) {
         listaServicios.remove(servicio);
         guardarDatos();
     }
