@@ -8,13 +8,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileReader;
 
-// Clase para leer el archivo de acceso
+/**
+ * Clase que lee un archivo de acceso y devuelve una lista de objetos Usuario.
+ * 
+ * @author Jeffry
+ */
 public class AccReader {
 
     // Atributos
     private static final String fileName = "grupoJeffMelanieNorman/usuarios.acc";
     private ArrayList<Usuario> usuarios;
-
+    public AccReader(){
+        usuarios=leerArchivoAcc();
+    }
     /**
      * Lee un archivo de acceso y devuelve una lista de objetos Usuario.
      * 
@@ -44,29 +50,6 @@ public class AccReader {
         }
 
         return usuarios;
-    }
-
-    /**
-     * Verifica si el nombre de usuario y la contraseña proporcionados coinciden con los datos almacenados en la lista de usuarios.
-     * 
-     * @param usuarios la lista de usuarios registrados
-     * @param nombre el nombre de usuario a verificar
-     * @param contraseña la contraseña a verificar
-     * @return true si el nombre de usuario y la contraseña coinciden, false de lo contrario
-     */
-    public boolean verificarInicio(ArrayList<Usuario> usuarios, String nombre, String contraseña) {
-        int indice = buscarUsuario(usuarios, nombre);
-        if (indice != -1) {
-            Usuario usuario = usuarios.get(indice);
-            String contraseñaGuardada = usuario.getPassword();
-            if (contraseña.equals(contraseñaGuardada)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -128,11 +111,7 @@ public class AccReader {
      */
     public boolean existeUsuario(String nombre) {
         int indice = buscarUsuario(usuarios, nombre);
-        if (indice != -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return indice != -1;
     }
 
     /**
@@ -147,11 +126,7 @@ public class AccReader {
         if (indice != -1) {
             Usuario usuario = usuarios.get(indice);
             String contraseñaGuardada = usuario.getPassword();
-            if (contraseña.equals(contraseñaGuardada)) {
-                return true;
-            } else {
-                return false;
-            }
+            return contraseña.equals(contraseñaGuardada);
         } else {
             return false;
         }

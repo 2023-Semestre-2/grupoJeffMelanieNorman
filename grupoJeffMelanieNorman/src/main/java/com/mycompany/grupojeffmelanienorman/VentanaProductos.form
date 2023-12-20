@@ -103,7 +103,7 @@
             <Property name="text" type="java.lang.String" value="Seleccionar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="RegistroProductos registro = new RegistroProductos();&#xa;JSONArray listaArticulos = registro.listaArticulos; // Asumiendo que hay un getter para obtener el JSONArray&#xa;Map&lt;String, JSONObject&gt; mapArticulos = new HashMap&lt;&gt;();&#xa;&#xa;for (Object item : listaArticulos) {&#xa;    JSONObject articulo = (JSONObject) item;&#xa;    String nombreArticulo = articulo.get(&quot;Nombre&quot;).toString();&#xa;    jComboBox1.addItem(nombreArticulo);&#xa;&#xa;    mapArticulos.put(nombreArticulo, articulo);&#xa;}&#xa;&#xa;jButton1.addActionListener(new ActionListener() {&#xa;    public void actionPerformed(ActionEvent e) {&#xa;        jButton3.setVisible(true);&#xa;        jButton4.setVisible(true);&#xa;        String selectedName = (String) jComboBox1.getSelectedItem();&#xa;&#xa;        JSONObject selectedArticulo = mapArticulos.get(selectedName);&#xa;&#xa;        if (selectedArticulo != null) {&#xa;            // Aqu&#xed; tienes el JSONObject seleccionado y puedes trabajar con &#xe9;l&#xa;        }&#xa;    }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="RegistroProductos registro = new RegistroProductos();&#xa;JSONArray listaArticulos = registro.listaArticulos; // Asumiendo que hay un getter para obtener el JSONArray&#xa;Map&lt;String, JSONObject&gt; mapArticulos = new HashMap&lt;&gt;();&#xa;&#xa;for (Object item : listaArticulos) {&#xa;    JSONObject articulo = (JSONObject) item;&#xa;    String nombreArticulo = articulo.get(&quot;Nombre&quot;).toString();&#xa;    jComboBox1.addItem(nombreArticulo);&#xa;&#xa;    mapArticulos.put(nombreArticulo, articulo);&#xa;}&#xa;&#xa;jButton1.addActionListener(new ActionListener() {&#xa;    public void actionPerformed(ActionEvent e) {&#xa;        jButton3.setVisible(true);&#xa;        jButton4.setVisible(true);&#xa;        String selectedName = (String) jComboBox1.getSelectedItem();&#xa;&#xa;        JSONObject selectedArticulo = mapArticulos.get(selectedName);&#xa;&#xa;        if (selectedArticulo != null) {&#xa;            articuloSeleccionado=selectedArticulo;&#xa;        }&#xa;    }&#xa;});"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
@@ -139,7 +139,7 @@
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jButton3.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jButton3.setVisible(false);&#xa;jButton3.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;                new VentanaModificarProducto(articuloSeleccionado);&#xa;            }&#xa;        });"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
@@ -147,7 +147,7 @@
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jButton4.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jButton4.setVisible(false);&#xa;jButton4.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;                RegistroProductos registro=new RegistroProductos();&#xa;                try{&#xa;                    registro.eliminar(articuloSeleccionado);&#xa;                    JOptionPane.showMessageDialog(null, &quot;Articulo eliminado correctamente.&quot;, &quot;&#xc9;xito&quot;, JOptionPane.INFORMATION_MESSAGE);&#xa;                &#xa;                }catch(Exception E){&#xa;                    JOptionPane.showMessageDialog(null, &quot;Error al eliminar articulo.&quot;, &quot;Error&quot;, JOptionPane.ERROR_MESSAGE);&#xa;                }&#xa;            }&#xa;        });"/>
           </AuxValues>
         </Component>
       </SubComponents>

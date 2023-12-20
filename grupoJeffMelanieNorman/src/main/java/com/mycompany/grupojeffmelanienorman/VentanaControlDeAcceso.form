@@ -104,7 +104,7 @@
             <Property name="text" type="java.lang.String" value="Ingresar"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jButton1.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;                VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();&#xa;                ventana.setVisible(true);&#xa;            }&#xa;        });"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="jButton1.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;                String nombre=jTextField1.getText();&#xa;                String password= new String(jPasswordField1.getPassword());&#xa;                VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();&#xa;                        ventana.setVisible(true);&#xa;                /*try{&#xa;                    AccReader reader=new AccReader();&#xa;                    if(reader.verificarInicio(nombre, password)){&#xa;                        VentanaOpcionesControlDeAcceso ventana=new VentanaOpcionesControlDeAcceso();&#xa;                        ventana.setVisible(true);&#xa;                    }&#xa;                }catch(Exception E){&#xa;                    JOptionPane.showMessageDialog(null, &quot;No existen usuarios. Agregar archivo de usuarios.&quot;, &quot;Error&quot;, JOptionPane.ERROR_MESSAGE);&#xa;                }   */&#xa;            }&#xa;        });"/>
           </AuxValues>
         </Component>
       </SubComponents>

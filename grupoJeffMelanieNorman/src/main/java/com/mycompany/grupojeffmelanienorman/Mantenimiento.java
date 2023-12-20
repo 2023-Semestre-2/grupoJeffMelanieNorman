@@ -9,16 +9,25 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Clase que maneja los servicios de mantenimiento de bicicletas.
+ * @author Norman
+ */
+
 public class Mantenimiento {
 
     public JSONArray listaServicios;
     private int ultimoCodigoServicio;
-    private static final String FILE_PATH = "Mantenimientos.json";
+    private static final String FILE_PATH = "grupoJeffMelanieNorman/Mantenimiento.json";
 
     public Mantenimiento() {
         cargarDatos();
     }
 
+    /**
+     * Carga los datos de un archivo JSON y actualiza la lista de servicios.
+     * Si ocurre algún error al cargar los datos, se inicializa una nueva lista de servicios vacía.
+     */
     private void cargarDatos() {
         JSONParser parser = new JSONParser();
         try {
@@ -31,6 +40,9 @@ public class Mantenimiento {
         }
     }
 
+    /**
+     * Guarda los datos de los servicios en un archivo JSON.
+     */
     private void guardarDatos() {
         try (FileWriter file = new FileWriter(FILE_PATH)) {
             JSONObject obj = new JSONObject();
@@ -42,6 +54,11 @@ public class Mantenimiento {
         }
     }
 
+    /**
+     * Actualiza el último código de servicio.
+     * Si la lista de servicios no está vacía, obtiene el último servicio de la lista y actualiza el código del último servicio sumándole 1.
+     * Si la lista de servicios está vacía, establece el código del último servicio como 1.
+     */
     private void actualizarUltimoCodigo() {
         if (!listaServicios.isEmpty()) {
             JSONObject ultimoServicio = (JSONObject) listaServicios.get(listaServicios.size() - 1);
@@ -50,9 +67,13 @@ public class Mantenimiento {
             ultimoCodigoServicio = 1;
         }
     }
-    
-    
-    
+
+    /**
+     * Busca un cliente por su código y devuelve el nombre del cliente.
+     * 
+     * @param codigoCliente el código del cliente a buscar
+     * @return el nombre del cliente si se encuentra, o null si no se encuentra el cliente
+     */
     public String buscarClientePorCodigo(int codigoCliente) {
         JSONParser parser = new JSONParser();
         try {
@@ -72,10 +93,19 @@ public class Mantenimiento {
         }
         return null; // Retorna null si no se encuentra el cliente
     }
-
     
-
-
+    /**
+     * Agrega un nuevo servicio a la lista de servicios. El nuevo servicio se crea con los datos recibidos como parámetros.
+     * @param codigoCliente código del cliente
+     * @param marcaBicicleta marca de la bicicleta
+     * @param descripcionBicicleta descripción de la bicicleta
+     * @param precio precio del servicio
+     * @param fechaRecibido fecha en formato "dd/MM/yyyy"
+     * @param fechaEntrega fecha en formato "dd/MM/yyyy"
+     * @param observaciones texto con las observaciones del servicio
+     * @param estado "Abierto" o "Cerrado"
+     * @return el servicio recién creado
+     */
     public JSONObject agregarServicio(int codigoCliente, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         ultimoCodigoServicio++;
 
@@ -96,6 +126,18 @@ public class Mantenimiento {
         return nuevoServicio; // Retorna el servicio recién creado
     }  
     
+    /**
+     * Modifica los datos de un servicio en el sistema.
+     * 
+     * @param servicio el objeto JSON que representa el servicio a modificar
+     * @param marcaBicicleta la marca de la bicicleta del servicio
+     * @param descripcionBicicleta la descripción de la bicicleta del servicio
+     * @param precio el precio del servicio
+     * @param fechaRecibido la fecha de recepción del servicio
+     * @param fechaEntrega la fecha de entrega del servicio
+     * @param observaciones las observaciones del servicio
+     * @param estado el estado del servicio
+     */
     public void modificar(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         servicio.put("Marca Bicicleta", marcaBicicleta.trim());
         servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
@@ -108,7 +150,13 @@ public class Mantenimiento {
         guardarDatos();
     }
     
-        public JSONObject buscarServicio(int criterioBusqueda, String valorBusqueda) {
+    /**
+     * Busca un servicio por su código y devuelve el servicio.
+     * @param criterioBusqueda
+     * @param valorBusqueda 
+     * @return el servicio si se encuentra, o null si no se encuentra el servicio
+     */
+    public JSONObject buscarServicio(int criterioBusqueda, String valorBusqueda) {
         JSONObject encontrado = null;
 
         if (criterioBusqueda == 1) { // Búsqueda por código de cliente
@@ -136,6 +184,18 @@ public class Mantenimiento {
 
         return encontrado;
     }
+    /**
+     * Modifica un servicio existente en el sistema.
+     * 
+     * @param servicio el objeto JSON que representa el servicio a modificar
+     * @param marcaBicicleta la marca de la bicicleta asociada al servicio
+     * @param descripcionBicicleta la descripción de la bicicleta asociada al servicio
+     * @param precio el precio del servicio
+     * @param fechaRecibido la fecha en que se recibió la bicicleta para el servicio
+     * @param fechaEntrega la fecha de entrega del servicio
+     * @param observaciones las observaciones adicionales del servicio
+     * @param estado el estado actual del servicio
+     */
     public void modificarServicio(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         servicio.put("Marca Bicicleta", marcaBicicleta.trim());
         servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
@@ -148,7 +208,10 @@ public class Mantenimiento {
         guardarDatos();
     }
     
-    
+    /**
+     * Elimina un servicio del sistema.
+     * @param servicio
+     */
     public void eliminar(JSONObject servicio) {
         listaServicios.remove(servicio);
         guardarDatos();

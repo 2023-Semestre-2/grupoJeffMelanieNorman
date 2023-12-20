@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -22,7 +23,9 @@ public class VentanaProductos extends javax.swing.JFrame {
     /**
      * Creates new form VentanaProductos
      */
+    JSONObject articuloSeleccionado;
     public VentanaProductos() {
+        articuloSeleccionado=null;
         initComponents();
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -84,12 +87,29 @@ public class VentanaProductos extends javax.swing.JFrame {
                 JSONObject selectedArticulo = mapArticulos.get(selectedName);
 
                 if (selectedArticulo != null) {
-                    // Aquí tienes el JSONObject seleccionado y puedes trabajar con él
+                    articuloSeleccionado=selectedArticulo;
                 }
             }
         });
         jButton3.setVisible(false);
+        jButton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new VentanaModificarProducto(articuloSeleccionado);
+            }
+        });
         jButton4.setVisible(false);
+        jButton4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                RegistroProductos registro=new RegistroProductos();
+                try{
+                    registro.eliminar(articuloSeleccionado);
+                    JOptionPane.showMessageDialog(null, "Articulo eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+                }catch(Exception E){
+                    JOptionPane.showMessageDialog(null, "Error al eliminar articulo.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

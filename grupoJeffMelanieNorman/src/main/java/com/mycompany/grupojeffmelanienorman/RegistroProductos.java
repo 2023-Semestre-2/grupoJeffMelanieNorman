@@ -9,6 +9,11 @@ import java.util.Scanner;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
+/**
+ * Clase que maneja el registro de productos y artículos.
+ * @author Norman
+ */
+
 public class RegistroProductos {
     // Atributos
     public JSONArray listaProductos;
@@ -143,6 +148,12 @@ public class RegistroProductos {
         return null;
     }
 
+    /**
+     * Obtiene el código del tipo de producto a partir de un archivo JSON.
+     * 
+     * @param tipoArticulo el nombre del tipo de artículo a buscar
+     * @return el código del tipo de producto encontrado, o 0 si no se encuentra o hay un error
+     */
     private int obtenerCodigoTipoProductoDesdeJson(String tipoArticulo) {
         JSONParser parser = new JSONParser();
         try {
@@ -227,7 +238,7 @@ public class RegistroProductos {
         if (tipo != null && !tipo.isEmpty()) {
             articulo.put("Tipo", tipo);
         }
-        if (tamano != null && !tamano.isEmpty()) {
+        if (tipo.equals("Bicileta") && tamano != null && !tamano.isEmpty()) {
             articulo.put("Tamaño", tamano);
         }
 
