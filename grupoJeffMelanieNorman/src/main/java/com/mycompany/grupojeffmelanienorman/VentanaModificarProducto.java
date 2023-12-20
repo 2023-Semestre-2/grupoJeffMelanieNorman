@@ -4,22 +4,26 @@
  */
 package com.mycompany.grupojeffmelanienorman;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import javax.swing.JOptionPane;
+import org.json.simple.JSONObject;
 
 /**
  *
  * @author Melanie
  */
 public class VentanaModificarProducto extends javax.swing.JFrame {
-    private String elementoSeleccionado;
+    private JSONObject elementoSeleccionado;
     /**
      * Creates new form VentanaModificarProducto
      */
-    public VentanaModificarProducto(String elemento) {
+    public VentanaModificarProducto(JSONObject elemento) {
         this.elementoSeleccionado = elemento;
         initComponents();
-        jLabel2.setText(elemento);
+        jLabel2.setText((String) elemento.get("Nombre"));
         jComboBox1.addItemListener(new ItemListener() {
         public void itemStateChanged(ItemEvent event) {
             if (event.getStateChange() == ItemEvent.SELECTED) {
@@ -32,6 +36,34 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
                 }
         }
     });
+        //modificar(JSONObject articulo, String nombre, String marca, int cantidad, int precio, String tipo, String tamano)
+        jButton1.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    String nombre=jTextField1.getText().trim();
+                    String marca=jTextField2.getText().trim();
+                    String tipo=(String) jComboBox1.getSelectedItem();
+                    String tamano="";
+                    int cantidad=0;
+                    int precio=0;
+                    if(tipo.equals("Bicicleta")){
+                        tamano=(String) jComboBox2.getSelectedItem();
+                    }
+                    try{
+                        cantidad=Integer.parseInt(jTextField4.getText());
+                        precio=Integer.parseInt(jTextField3.getText());
+                    }catch (Exception E){
+                        JOptionPane.showMessageDialog(null, "Debe ingresar un numero valido en el campo de precio y cantidad.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
+                    RegistroProductos registro=new RegistroProductos();
+                    try{
+                        registro.modificar(elementoSeleccionado, nombre, marca, cantidad, precio, tipo, tamano);
+                    }catch(Exception E){
+                        JOptionPane.showMessageDialog(null, "Error al modificar articulo.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
+                }
+            });
     }
 
     /**
