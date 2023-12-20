@@ -79,52 +79,51 @@ public class Mantenimiento {
 
 
     public JSONObject agregarServicio(int codigoCliente, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
-        ultimoCodigoServicio++;
+        String nombreCliente = buscarClientePorCodigo(codigoCliente);
 
-        JSONObject nuevoServicio = new JSONObject();
-        nuevoServicio.put("Codigo", ultimoCodigoServicio);
-        nuevoServicio.put("Codigo Cliente", codigoCliente);
-        nuevoServicio.put("Marca Bicicleta", marcaBicicleta.trim());
-        nuevoServicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
-        nuevoServicio.put("Precio", precio);
-        nuevoServicio.put("Fecha Recibido", fechaRecibido); // Asumiendo que la fecha viene en un formato correcto
-        nuevoServicio.put("Fecha Entrega", fechaEntrega); // Asumiendo que la fecha viene en un formato correcto
-        nuevoServicio.put("Observaciones", observaciones.trim());
-        nuevoServicio.put("Estado", estado); // "Abierto" o "Cerrado"
+        if (nombreCliente != null) {
+            // El cliente existe, proceder con la creación del servicio
+            ultimoCodigoServicio++;
 
-        listaServicios.add(nuevoServicio);
-        guardarDatos();
+            JSONObject nuevoServicio = new JSONObject();
+            nuevoServicio.put("Codigo", ultimoCodigoServicio);
+            nuevoServicio.put("Codigo Cliente", codigoCliente);
+            nuevoServicio.put("Nombre Cliente", nombreCliente); // Agregar nombre del cliente
+            nuevoServicio.put("Marca Bicicleta", marcaBicicleta.trim());
+            nuevoServicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
+            nuevoServicio.put("Precio", precio);
+            nuevoServicio.put("Fecha Recibido", fechaRecibido); // Asumiendo que la fecha viene en un formato correcto
+            nuevoServicio.put("Fecha Entrega", fechaEntrega); // Asumiendo que la fecha viene en un formato correcto
+            nuevoServicio.put("Observaciones", observaciones.trim());
+            nuevoServicio.put("Estado", estado);
 
-        return nuevoServicio; // Retorna el servicio recién creado
-    }  
-    
-    public void modificar(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
-        servicio.put("Marca Bicicleta", marcaBicicleta.trim());
-        servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
-        servicio.put("Precio", precio);
-        servicio.put("Fecha Recibido", fechaRecibido);
-        servicio.put("Fecha Entrega", fechaEntrega);
-        servicio.put("Observaciones", observaciones.trim());
-        servicio.put("Estado", estado);
+            listaServicios.add(nuevoServicio);
+            guardarDatos();
 
-        guardarDatos();
+            return nuevoServicio; // Retorna el servicio recién creado
+        } else {
+            // Cliente no encontrado, manejar según sea necesario
+            return null; // O manejar de otra manera según la lógica de tu aplicación
+        }
     }
+
     
-        public JSONObject buscarServicio(int criterioBusqueda, String valorBusqueda) {
+    
+    public JSONObject buscar(int criterioBusqueda, String valorBusqueda) {
         JSONObject encontrado = null;
 
-        if (criterioBusqueda == 1) { // Búsqueda por código de cliente
+        if (criterioBusqueda == 1) { // Búsqueda por código del servicio
             try {
-                int codigo = Integer.parseInt(valorBusqueda);
+                int codigoServicio = Integer.parseInt(valorBusqueda);
                 for (Object item : listaServicios) {
                     JSONObject servicio = (JSONObject) item;
-                    if (((Long) servicio.get("Codigo Cliente")).intValue() == codigo) {
+                    if (((Long) servicio.get("Codigo")).intValue() == codigoServicio) {
                         encontrado = servicio;
                         break;
                     }
                 }
             } catch (NumberFormatException e) {
-                // Manejo de error si valorBusqueda no es un número
+                // Manejar el error si valorBusqueda no es un número válido
             }
         } else if (criterioBusqueda == 2) { // Búsqueda por nombre del cliente
             for (Object item : listaServicios) {
@@ -138,6 +137,7 @@ public class Mantenimiento {
 
         return encontrado;
     }
+
     public void modificarServicio(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         servicio.put("Marca Bicicleta", marcaBicicleta.trim());
         servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
