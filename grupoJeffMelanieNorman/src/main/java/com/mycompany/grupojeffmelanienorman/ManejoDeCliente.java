@@ -88,5 +88,46 @@ public class ManejoDeCliente {
         }
     }
 
-    
+    /**
+     * Modifica un cliente existente
+     * @param idCliente
+     * @param nombre
+     * @param apellido
+     * @param provincia
+     * @param canton
+     * @param distrito
+     * @param telefono
+     * @param email
+     * @param fechaDeNacimiento
+     */
+    public void modificarCliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
+        for(int i = 0; i < clientes.size(); i++){
+            if(clientes.get(i).getIdCliente() == idCliente){
+                clientes.get(i).setNombre(nombre);
+                clientes.get(i).setApellido(apellido);
+                clientes.get(i).setProvincia(provincia);
+                clientes.get(i).setCanton(canton);
+                clientes.get(i).setDistrito(distrito);
+                clientes.get(i).setTelefono(telefono);
+                clientes.get(i).setEmail(email);
+                clientes.get(i).setFechaDeNacimiento(fechaDeNacimiento);
+                guardarDatos();
+                break;
+            }
+        }
+    }
+
+    /**
+     * Elimina un cliente existente
+     * @param idCliente
+     */
+    public void eliminarCliente(int idCliente){
+        for(int i = 0; i < clientes.size(); i++){
+            if(clientes.get(i).getIdCliente() == idCliente){
+                clientes.remove(i);
+                guardarDatos();
+                break;
+            }
+        }
+    }
 }

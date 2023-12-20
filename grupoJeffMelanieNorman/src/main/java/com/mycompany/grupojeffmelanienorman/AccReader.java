@@ -8,7 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileReader;
 
-// Clase para leer el archivo de acceso
+/**
+ * Clase que lee un archivo de acceso y devuelve una lista de objetos Usuario.
+ * 
+ * @author Jeffry
+ */
 public class AccReader {
 
     // Atributos
