@@ -5,6 +5,7 @@
 package com.mycompany.grupojeffmelanienorman;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,5 +39,46 @@ public class ManejoFacturas {
                 Factura factura = new Factura(idFactura, subTotal, estado);
                 this.facturas.add(factura);
             }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Factura> getFacturas() {
+        return facturas;
+    }
+
+    private void guardarDatos(){
+        JSONArray listaFacturas = new JSONArray();
+        for(int i = 0; i < this.facturas.size(); i++){
+            Factura factura = this.facturas.get(i);
+            JSONObject facturaJson = new JSONObject();
+            facturaJson.put("idFactura", factura.getIdFactura());
+            facturaJson.put("subTotal", factura.getSubTotal());
+            facturaJson.put("estado", factura.isEstado());
+            listaFacturas.put(facturaJson);
+        }
+        try (FileWriter file = new FileWriter(fileName)) {
+            file.write(listaFacturas.toString());
+            file.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void agregarFactura(Factura factura){
+        this.facturas.add(factura);
+        this.guardarDatos();
+    }
+
+    public void anularFactura(int idFactura){
+        for(int i = 0; i < this.facturas.size(); i++){
+            Factura factura = this.facturas.get(i);
+            if(factura.getIdFactura() == idFactura){
+                factura.setEstado(false);
+                this.guardarDatos();
+                break;
+            }
+        }
     }
 }

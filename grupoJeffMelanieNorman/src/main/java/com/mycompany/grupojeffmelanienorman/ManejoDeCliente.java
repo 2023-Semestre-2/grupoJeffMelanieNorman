@@ -34,6 +34,36 @@ public class ManejoDeCliente {
         this.cargarDatos();
     }
 
+    /**
+     * Crea un nuevo cliente
+     * @param idCliente
+     * @param nombre
+     * @param apellido
+     * @param provincia
+     * @param canton
+     * @param distrito
+     * @param telefono
+     * @param email
+     * @param fechaDeNacimiento
+     */
+    public void crearCliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
+        if(telefonoValido(telefono)){
+            if(correoValido(email)){
+                if(fechaValida(fechaDeNacimiento)){
+                    Cliente nuevoCliente = new Cliente(idCliente, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento);
+                    clientes.add(nuevoCliente);
+                    guardarDatos();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe ingresar una fecha de nacimiento valida.", "Error.", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Debe ingresar un correo electronico valido.", "Error.", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero telefonico valido.", "Error.", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }

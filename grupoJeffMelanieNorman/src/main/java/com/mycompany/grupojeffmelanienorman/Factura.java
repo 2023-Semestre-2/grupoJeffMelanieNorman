@@ -14,7 +14,7 @@ public class Factura {
     private final int IMPUESTO = 13;
     private int subTotal;
     private int total = subTotal + (subTotal * IMPUESTO / 100);
-    private boolean estado;
+    private boolean estado = true;
 
     public Factura(int idFactura, int subTotal, boolean estado) {
         this.idFactura = idFactura;
