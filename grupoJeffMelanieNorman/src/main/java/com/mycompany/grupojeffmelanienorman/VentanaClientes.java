@@ -23,6 +23,7 @@ public class VentanaClientes extends javax.swing.JFrame {
      */
     public VentanaClientes() {
         clienteActual=null;
+        mapClientes=new HashMap();
         initComponents();
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

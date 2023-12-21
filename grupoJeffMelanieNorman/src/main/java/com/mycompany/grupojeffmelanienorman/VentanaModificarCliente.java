@@ -36,7 +36,12 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
                     String provincia=(String) jComboBox1.getSelectedItem();
                     String canton=jTextField5.getText().trim();
                     String distrito=jTextField6.getText().trim();
-                    manejo.modificarCliente(cliente.getIdCliente(), nombre, apellidos, provincia, canton, distrito, telefono, correo, fecha);
+                    try{
+                        manejo.modificarCliente(cliente.getIdCliente(), nombre, apellidos, provincia, canton, distrito, telefono, correo, fecha);
+                        JOptionPane.showMessageDialog(null, "Cliente modificado correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    }catch(Exception E){
+                        JOptionPane.showMessageDialog(null, "Error al modificar cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "Debe ingresar una fecha valida (dd/mm/yyyy).", "Error.", JOptionPane.ERROR_MESSAGE);
                 }

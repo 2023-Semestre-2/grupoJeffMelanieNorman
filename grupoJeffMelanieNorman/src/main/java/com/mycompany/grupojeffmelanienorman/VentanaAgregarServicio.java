@@ -6,6 +6,9 @@ package com.mycompany.grupojeffmelanienorman;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,37 +16,62 @@ import javax.swing.JOptionPane;
  * @author Melanie
  */
 public class VentanaAgregarServicio extends javax.swing.JFrame {
-
+    Map<String, Cliente> mapClientes;
+    
     /**
      * Creates new form VentanaAgregarServicio
      */
     public VentanaAgregarServicio() {
+        mapClientes=new HashMap();
+        
         initComponents();
         //agregarServicio(int codigoCliente, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Mantenimiento mantenimiento=new Mantenimiento();
-                String marca=jTextField1.getText().trim();
-                String descripcion=jTextField2.getText().trim();
-                String fechaR=jTextField5.getText().trim();
-                String fechaE=jTextField6.getText().trim();
-                String observaciones=jTextField4.getText().trim();
-                int codigoCliente=0;
-                int precio=0;
-                try{
-                    precio=Integer.parseInt(jTextField3.getText());
-                }catch (Exception E){
-                    JOptionPane.showMessageDialog(null, "Debe ingresar un precio valido.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                try{
-                    mantenimiento.agregarServicio(codigoCliente, marca, descripcion, precio, fechaR, fechaE, observaciones, "Abierto");
-                    JOptionPane.showMessageDialog(null, "Servicio de mantenimiento agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                
-                }catch(Exception E){
-                    JOptionPane.showMessageDialog(null, "Error al agregar servicio de mantenimiento.", "Error", JOptionPane.ERROR_MESSAGE);
+                String selectedInfo = (String) jComboBox1.getSelectedItem();
+                if(mapClientes!=null){
+                    Cliente selectedCliente = mapClientes.get(selectedInfo);
+                    if(selectedCliente != null) {
+                        String fechaR=jTextField5.getText().trim();
+                        String fechaE=jTextField6.getText().trim();
+                        if(ManejoDeCliente.fechaValida(fechaR) && ManejoDeCliente.fechaValida(fechaE)){
+                            Mantenimiento mantenimiento=new Mantenimiento();
+                            String marca=jTextField1.getText().trim();
+                            String descripcion=jTextField2.getText().trim();
+                           
+                            String observaciones=jTextField4.getText().trim();
+                            int codigoCliente=selectedCliente.getIdCliente();
+                            int precio=0;
+                            try{
+                                precio=Integer.parseInt(jTextField3.getText());
+                            }catch (Exception E){
+                                JOptionPane.showMessageDialog(null, "Debe ingresar un precio valido.", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                            try{
+                                mantenimiento.agregarServicio(codigoCliente, marca, descripcion, precio, fechaR, fechaE, observaciones, "Abierto");
+                                JOptionPane.showMessageDialog(null, "Servicio de mantenimiento agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+                            }catch(Exception E){
+                                JOptionPane.showMessageDialog(null, "Error al agregar servicio de mantenimiento.", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Debe ingresar fechas validas (dd/mm/yyyy).", "Error.", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
                 }
             }
         });
+        ManejoDeCliente manejoClientes = new ManejoDeCliente();
+        
+        ArrayList<Cliente> clientes = manejoClientes.getClientes(); // Asumiendo que hay un método getClientes
+        if(mapClientes!=null){
+            mapClientes.clear();
+            for(Cliente cliente : clientes) {
+                String clienteInfo = cliente.getIdCliente() + " - " + cliente.getNombre();
+                jComboBox1.addItem(clienteInfo);
+                mapClientes.put(clienteInfo, cliente);
+            }
+        }
     }
 
     /**
@@ -101,6 +129,10 @@ public class VentanaAgregarServicio extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jTextField5.setText("(dd/mm/yyyy)");
+
+        jTextField6.setText("(dd/mm/yyyy)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

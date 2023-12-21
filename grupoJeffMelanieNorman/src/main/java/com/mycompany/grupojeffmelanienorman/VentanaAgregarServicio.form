@@ -202,8 +202,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="(dd/mm/yyyy)"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="(dd/mm/yyyy)"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
