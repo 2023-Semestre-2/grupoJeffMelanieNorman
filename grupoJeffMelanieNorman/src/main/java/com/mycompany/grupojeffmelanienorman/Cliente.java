@@ -23,7 +23,18 @@ public class Cliente {
     private String fechaDeNacimiento;
     private ArrayList<Factura> facturas = new ArrayList<Factura>();
 
-    // Constructor
+    /**
+     * @param idCliente
+     * @param nombre
+     * @param apellido
+     * @param provincia
+     * @param canton
+     * @param distrito
+     * @param telefono
+     * @param email
+     * @param fechaDeNacimiento
+     * @param facturas 
+     */
     public Cliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento, ArrayList<Factura> facturas) {
         this.idCliente = idCliente;
         this.idCliente = idCliente;
@@ -181,7 +192,9 @@ public class Cliente {
     public void setFechaDeNacimiento(String fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
-
+    /**
+     * @return 
+     */
     public int getIdCliente() {
         return idCliente;
     }
@@ -189,10 +202,16 @@ public class Cliente {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-    
+    /**
+     * @return facturas
+     */
     public ArrayList<Factura> getFacturas() {
         return facturas;
     }
+    /**
+     * 
+     * @param facturas 
+     */
     public void setFacturas(ArrayList<Factura> facturas) {
         this.facturas = facturas;
     }

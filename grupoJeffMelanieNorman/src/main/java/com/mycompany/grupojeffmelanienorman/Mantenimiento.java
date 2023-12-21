@@ -210,7 +210,7 @@ public class Mantenimiento {
     
     /**
      * Elimina un servicio del sistema.
-     * @param servicio
+     * @param servicio el objeto JSON que representa el servicio a eliminar
      */
     public void eliminar(JSONObject servicio) {
         listaServicios.remove(servicio);

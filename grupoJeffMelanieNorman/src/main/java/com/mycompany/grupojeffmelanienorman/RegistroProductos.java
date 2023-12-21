@@ -216,7 +216,6 @@ public class RegistroProductos {
      * Si alguno de los parámetros es diferente de null y no está vacío, se actualiza el valor correspondiente en el objeto JSON del artículo.
      * Los parámetros 'cantidad' y 'precio' siempre se actualizan.
      * Después de realizar las modificaciones, se guardan los cambios en el archivo JSON.
-     *
      * @param articulo el objeto JSON del artículo a modificar
      * @param nombre el nuevo nombre del artículo (opcional)
      * @param marca la nueva marca del artículo (opcional)
@@ -255,32 +254,4 @@ public class RegistroProductos {
         guardarDatos(); // Guarda los cambios en el archivo JSON
     }
         
-    /*public static void main(String[] args) {
-        RegistroProductos registro = new RegistroProductos();
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("Seleccione una opción:");
-            System.out.println("1. Agregar Artículo");
-            System.out.println("2. Buscar Artículo");
-            System.out.println("3. Salir");
-            System.out.print("Ingrese su opción: ");
-
-            int eleccion = scanner.nextInt();
-
-            switch (eleccion) {
-                case 1:
-                    registro.agregarArticulo();
-                    break;
-                case 2:
-                    registro.buscar();
-                    break;
-                case 3:
-                    System.out.println("Saliendo...");
-                    return;
-                default:
-                    System.out.println("Opción no válida. Por favor intente nuevamente.");
-            }
-        }
-    }*/
 }
