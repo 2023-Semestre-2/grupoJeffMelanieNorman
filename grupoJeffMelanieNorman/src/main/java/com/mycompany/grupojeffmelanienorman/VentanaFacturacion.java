@@ -26,7 +26,31 @@ public class VentanaFacturacion extends javax.swing.JFrame {
             }
         });
     }
+/* ManejoFacturas manejo = new ManejoFacturas();
+        JSONArray facturas = mantenmiento.facturas; // Asumiendo que hay un getter para obtener el JSONArray
+        Map<String, JSONObject> mapServicios = new HashMap<>();
 
+        for (Object item : facturas) {
+            JSONObject factura = (JSONObject) item;
+            String nombrefactura = servicio.get("Nombre Cliente").toString()+servicio.get("Codigo Cliente");
+            jComboBox1.addItem(nombreservicio);
+
+            mapArticulos.put(nombreservicio, servicio);
+        }
+
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jButton3.setVisible(true);
+                jButton4.setVisible(true);
+                String selectedName = (String) jComboBox1.getSelectedItem();
+
+                JSONObject selectedServicio = mapArticulos.get(selectedName);
+
+                if (selectedServicio != null) {
+                    servicioActual=selectedServicio;
+                }
+            }
+        });*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,12 +64,11 @@ public class VentanaFacturacion extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Facturacion");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +84,8 @@ public class VentanaFacturacion extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Anular");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,7 +100,10 @@ public class VentanaFacturacion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, 0, 279, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -89,7 +117,9 @@ public class VentanaFacturacion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,6 +171,7 @@ public class VentanaFacturacion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

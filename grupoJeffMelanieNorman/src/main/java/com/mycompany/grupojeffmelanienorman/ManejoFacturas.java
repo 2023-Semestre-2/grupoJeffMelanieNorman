@@ -20,8 +20,8 @@ public class ManejoFacturas {
     private ArrayList<Factura> facturas;
     private final String fileName = "grupoJeffMelanieNorman/Facturas.json";
 
-    public ManejoFacturas(ArrayList<Factura> facturas) {
-        this.facturas = facturas;
+    public ManejoFacturas() {
+        cargarDatos();
     }
     
     /**
