@@ -89,7 +89,7 @@ public class VentanaCrearUsuario extends javax.swing.JFrame {
 
         jLabel6.setText("Provincia:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San José", "Heredia", "Cartago", "Alajuela", "Puntarenas", "Guanacaste", "Limón" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alajuela", "Cartago", "Guanacaste", "Heredia", "Limon", "Puntarenas", "San Jose" }));
 
         jLabel7.setText("Canton:");
 

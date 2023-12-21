@@ -95,7 +95,7 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
 
         jLabel7.setText("Provincia:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San José", "Cartago", "Heredia", "Puntarenas", "Limón", "Alajuela", "Guanacaste" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alajuela", "Cartago", "Guanacaste", "Heredia", "Limon", "Puntarenas", "San Jose" }));
 
         jLabel8.setText("Canton:");
 
