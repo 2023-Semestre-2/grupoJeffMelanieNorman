@@ -28,7 +28,7 @@ public class ManejoDeCliente {
     // Atributos
     private ArrayList<Cliente> clientes;
     private final String fileName = "grupoJeffMelanieNorman/Clientes.json";
-
+    private int ultimoCodigo;
     // Constructor
     public ManejoDeCliente() {
         this.cargarDatos();
@@ -46,11 +46,18 @@ public class ManejoDeCliente {
      * @param email
      * @param fechaDeNacimiento
      */
-    public void crearCliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
+    private void actualizarUltimoCodigo() {
+        if (!clientes.isEmpty()) {
+            Cliente ultimoCliente = (Cliente) clientes.get(clientes.size() - 1);
+            ultimoCodigo = ultimoCliente.getIdCliente();
+        }
+    }
+    public void crearCliente(String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
+        ultimoCodigo++;
         if(telefonoValido(telefono)){
             if(correoValido(email)){
                 if(fechaValida(fechaDeNacimiento)){
-                    Cliente nuevoCliente = new Cliente(idCliente, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento, new ArrayList<Factura>());
+                    Cliente nuevoCliente = new Cliente(ultimoCodigo, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento, new ArrayList<Factura>());
                     clientes.add(nuevoCliente);
                     guardarDatos();
                 }else{
@@ -106,6 +113,7 @@ public class ManejoDeCliente {
         } catch(Exception e){
             e.printStackTrace();
         }
+        actualizarUltimoCodigo();
     }
 
     /**

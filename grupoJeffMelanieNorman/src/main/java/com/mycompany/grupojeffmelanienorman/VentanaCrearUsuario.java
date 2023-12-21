@@ -32,7 +32,12 @@ public class VentanaCrearUsuario extends javax.swing.JFrame {
                     String provincia=(String) jComboBox1.getSelectedItem();
                     String canton=jTextField5.getText().trim();
                     String distrito=jTextField6.getText().trim();
-                    //manejo.modificarCliente(cliente.getIdCliente(), nombre, apellidos, provincia, canton, distrito, telefono, correo, fecha);
+                    try{
+                        manejo.crearCliente(nombre, apellidos, provincia, canton, distrito, telefono, correo, fecha);
+                        JOptionPane.showMessageDialog(null, "Cliente agregado correctamente.", "Exito.", JOptionPane.INFORMATION_MESSAGE);
+                    }catch(Exception E){
+                        JOptionPane.showMessageDialog(null, "Error al agregar cliente.", "Error.", JOptionPane.ERROR_MESSAGE);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "Debe ingresar una fecha valida (dd/mm/yyyy).", "Error.", JOptionPane.ERROR_MESSAGE);
                 }
