@@ -15,7 +15,6 @@ import java.util.Date;
  */
 
 public class Mantenimiento {
-
     public JSONArray listaServicios;
     private int ultimoCodigoServicio;
     private static final String FILE_PATH = "grupoJeffMelanieNorman/Mantenimiento.json";
@@ -156,22 +155,23 @@ public class Mantenimiento {
      * @param valorBusqueda 
      * @return el servicio si se encuentra, o null si no se encuentra el servicio
      */
-    public JSONObject buscarServicio(int criterioBusqueda, String valorBusqueda) {
+    public JSONObject buscar(int criterioBusqueda, String valorBusqueda) {
         JSONObject encontrado = null;
 
-        if (criterioBusqueda == 1) { // Búsqueda por código de cliente
+        if (criterioBusqueda == 1) { // Búsqueda por código del servicio
             try {
-                int codigo = Integer.parseInt(valorBusqueda);
+                int codigoServicio = Integer.parseInt(valorBusqueda);
                 for (Object item : listaServicios) {
                     JSONObject servicio = (JSONObject) item;
-                    if (((Long) servicio.get("Codigo Cliente")).intValue() == codigo) {
+                    if (((Long) servicio.get("Codigo")).intValue() == codigoServicio) {
                         encontrado = servicio;
                         break;
                     }
                 }
             } catch (NumberFormatException e) {
-                // Manejo de error si valorBusqueda no es un número
+                // Manejar el error si valorBusqueda no es un número válido
             }
+
         } else if (criterioBusqueda == 2) { // Búsqueda por nombre del cliente
             for (Object item : listaServicios) {
                 JSONObject servicio = (JSONObject) item;
@@ -184,6 +184,21 @@ public class Mantenimiento {
 
         return encontrado;
     }
+    
+    /**
+    * Procesa todos los servicios con estado 'Cerrado' para facturación.
+    */
+    public void procesarServiciosCerradosParaFacturacion() {
+        for (Object item : listaServicios) {
+            JSONObject servicio = (JSONObject) item;
+            if ("Cerrado".equals(servicio.get("Estado").toString())) {
+                // Aquí llamar a alguna función en ManejoFacturas para procesar este servicio
+                // Por ejemplo: manejoFacturas.crearFactura(servicio);
+            }
+        }
+    }
+
+
     /**
      * Modifica un servicio existente en el sistema.
      * 
