@@ -4,6 +4,8 @@
  */
 package com.mycompany.grupojeffmelanienorman;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jeffry
@@ -19,9 +21,10 @@ public class Cliente {
     private String telefono; 
     private String email;
     private String fechaDeNacimiento;
+    private ArrayList<Factura> facturas = new ArrayList<Factura>();
 
     // Constructor
-    public Cliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento) {
+    public Cliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento, ArrayList<Factura> facturas) {
         this.idCliente = idCliente;
         this.idCliente = idCliente;
         this.nombre = nombre;
@@ -32,6 +35,7 @@ public class Cliente {
         this.telefono = telefono;
         this.email = email;
         this.fechaDeNacimiento = fechaDeNacimiento;
+        this.facturas = facturas;
     }
 
     /**
@@ -186,5 +190,10 @@ public class Cliente {
         this.idCliente = idCliente;
     }
     
-    
+    public ArrayList<Factura> getFacturas() {
+        return facturas;
+    }
+    public void setFacturas(ArrayList<Factura> facturas) {
+        this.facturas = facturas;
+    }
 }

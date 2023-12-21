@@ -50,7 +50,7 @@ public class ManejoDeCliente {
         if(telefonoValido(telefono)){
             if(correoValido(email)){
                 if(fechaValida(fechaDeNacimiento)){
-                    Cliente nuevoCliente = new Cliente(idCliente, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento);
+                    Cliente nuevoCliente = new Cliente(idCliente, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento, new ArrayList<Factura>());
                     clientes.add(nuevoCliente);
                     guardarDatos();
                 }else{
@@ -93,7 +93,8 @@ public class ManejoDeCliente {
                 String telefono = cliente.get("telefono").toString();
                 String email = cliente.get("email").toString();
                 String fechaDeNacimiento = cliente.get("fechaDeNacimiento").toString();
-                Cliente nuevoCliente = new Cliente(idCliente, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento);
+                ArrayList<Factura> facturas = (ArrayList<Factura>) cliente.get("facturas");
+                Cliente nuevoCliente = new Cliente(idCliente, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento, facturas);
                 clientes.add(nuevoCliente);
             }
         } catch(Exception e){
@@ -117,6 +118,7 @@ public class ManejoDeCliente {
             cliente.put("telefono", clientes.get(i).getTelefono());
             cliente.put("email", clientes.get(i).getEmail());
             cliente.put("fechaDeNacimiento", clientes.get(i).getFechaDeNacimiento());
+            cliente.put("facturas", clientes.get(i).getFacturas());
             listaClientes.add(cliente);
         }
         try{
@@ -244,6 +246,7 @@ public class ManejoDeCliente {
                         clientes.get(i).setTelefono(telefono);
                         clientes.get(i).setEmail(email);
                         clientes.get(i).setFechaDeNacimiento(fechaDeNacimiento);
+                        clientes.get(i).setFacturas(clientes.get(i).getFacturas());
                         guardarDatos();
                         break;
                     }
