@@ -93,7 +93,13 @@ public class ManejoDeCliente {
                 String telefono = cliente.get("telefono").toString();
                 String email = cliente.get("email").toString();
                 String fechaDeNacimiento = cliente.get("fechaDeNacimiento").toString();
-                ArrayList<Factura> facturas = (ArrayList<Factura>) cliente.get("facturas");
+                Object facturasObj = cliente.get("facturas");
+                ArrayList<Factura> facturas;
+                if (facturasObj instanceof ArrayList<?>) {
+                    facturas = (ArrayList<Factura>) facturasObj;
+                } else {
+                    facturas = new ArrayList<Factura>();
+                }
                 Cliente nuevoCliente = new Cliente(idCliente, nombre, apellido, provincia, canton, distrito, telefono, email, fechaDeNacimiento, facturas);
                 clientes.add(nuevoCliente);
             }
