@@ -72,6 +72,9 @@ public class ManejoDeCliente {
         this.clientes = clientes;
     }
 
+    /**
+     * Carga los datos de los clientes desde un archivo JSON y los agrega a la lista de clientes.
+     */
     private void cargarDatos(){
         JSONParser parser = new JSONParser();
         try{
@@ -98,6 +101,9 @@ public class ManejoDeCliente {
         }
     }
 
+    /**
+     * Guarda los datos de los clientes en un archivo JSON.
+     */
     private void guardarDatos(){
         JSONArray listaClientes = new JSONArray();
         for(int i = 0; i < clientes.size(); i++){
@@ -144,6 +150,13 @@ public class ManejoDeCliente {
         }
         return cont;
     }
+
+    /**
+     * Obtiene el número de una cadena de texto.
+     * 
+     * @param numero la cadena de texto de la cual se desea obtener el número.
+     * @return el número contenido en la cadena de texto.
+     */
     public String obtenerNumero(String numero){
         String cont="";
         for (int i = 0; i < numero.length(); i++) {
@@ -153,10 +166,24 @@ public class ManejoDeCliente {
         }
         return cont;
     }
+
+    /**
+     * Verifica si un número de teléfono es válido.
+     * 
+     * @param num el número de teléfono a verificar
+     * @return true si el número de teléfono es válido, false de lo contrario
+     */
     public boolean telefonoValido(String num){
         int primerDigito = Character.getNumericValue(num.charAt(0));
         return largo(num)==8 && (primerDigito==2 || primerDigito==4 || primerDigito==6 || primerDigito==8);
     }
+
+    /**
+     * Verifica si un correo electrónico es válido.
+     * 
+     * @param email el correo electrónico a verificar
+     * @return true si el correo electrónico es válido, false de lo contrario
+     */
     public boolean correoValido(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
@@ -166,6 +193,13 @@ public class ManejoDeCliente {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+    /**
+     * Verifica si una fecha dada es válida.
+     * 
+     * @param fecha La fecha en formato "dd/MM/yyyy" a validar.
+     * @return true si la fecha es válida, false de lo contrario.
+     */
     public static boolean fechaValida(String fecha) {
         String fechaRegex = "^\\d{2}/\\d{2}/\\d{4}$";
         Pattern pattern = Pattern.compile(fechaRegex);
@@ -183,6 +217,20 @@ public class ManejoDeCliente {
             return false; 
         }
     }
+
+    /**
+     * Modifica los datos de un cliente existente en la lista de clientes.
+     * 
+     * @param idCliente el identificador del cliente a modificar
+     * @param nombre el nuevo nombre del cliente
+     * @param apellido el nuevo apellido del cliente
+     * @param provincia la nueva provincia del cliente
+     * @param canton el nuevo cantón del cliente
+     * @param distrito el nuevo distrito del cliente
+     * @param telefono el nuevo número de teléfono del cliente
+     * @param email el nuevo correo electrónico del cliente
+     * @param fechaDeNacimiento la nueva fecha de nacimiento del cliente
+     */
     public void modificarCliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
         if(telefonoValido(telefono)){
             if(correoValido(email)){

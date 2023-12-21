@@ -24,6 +24,9 @@ public class ManejoFacturas {
         this.facturas = facturas;
     }
     
+    /**
+     * Carga los datos de las facturas desde un archivo JSON.
+     */
     private void cargarDatos(){
         JSONParser parser = new JSONParser();
         try{
@@ -44,10 +47,18 @@ public class ManejoFacturas {
         }
     }
 
+    /**
+     * Obtiene la lista de facturas.
+     * 
+     * @return la lista de facturas
+     */
     public ArrayList<Factura> getFacturas() {
         return facturas;
     }
 
+    /**
+     * Guarda los datos de las facturas en un archivo JSON.
+     */
     private void guardarDatos(){
         JSONArray listaFacturas = new JSONArray();
         for(int i = 0; i < this.facturas.size(); i++){
@@ -66,11 +77,21 @@ public class ManejoFacturas {
         }
     }
 
+    /**
+     * Agrega una factura al conjunto de facturas y guarda los datos actualizados.
+     * 
+     * @param factura la factura a agregar
+     */
     public void agregarFactura(Factura factura){
         this.facturas.add(factura);
         this.guardarDatos();
     }
 
+    /**
+     * Anula una factura dado su ID.
+     * 
+     * @param idFactura el ID de la factura a anular
+     */
     public void anularFactura(int idFactura){
         for(int i = 0; i < this.facturas.size(); i++){
             Factura factura = this.facturas.get(i);
