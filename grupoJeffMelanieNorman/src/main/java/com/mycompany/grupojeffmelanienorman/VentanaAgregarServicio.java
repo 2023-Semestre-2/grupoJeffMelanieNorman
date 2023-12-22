@@ -12,10 +12,16 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
+ * VentanaAgregarServicio
+ * 
+ * Esta es la ventana para agregar un servicio de mantenimiento.
  *
  * @author Melanie
  */
 public class VentanaAgregarServicio extends javax.swing.JFrame {
+    /**
+     * mapClientes para agregar un servicio de mantenimiento
+     */
     Map<String, Cliente> mapClientes;
     
     /**
@@ -217,11 +223,17 @@ public class VentanaAgregarServicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /** 
+     * jButton1ActionPerformed
+     * @param args[] the command line arguments
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
+     * main para iniciar el programa.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -257,22 +269,73 @@ public class VentanaAgregarServicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * jButton1 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * jComboBox1 para seleccionar un cliente
+     */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * jLabel1 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * jLabel2 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * jLabel3 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * jLabel4 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * jLabel5 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * jLabel6 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * jLabel7 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * jLabel8 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * jLabel9 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel9;
+    /**
+     * jTextField1 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JTextField jTextField1;
+    /**
+     * jTextField2 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JTextField jTextField2;
+    /**
+     * jTextField3 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JTextField jTextField3;
+    /**
+     * jTextField4 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JTextField jTextField4;
+    /**
+     * jTextField5 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JTextField jTextField5;
+    /**
+     * jTextField6 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

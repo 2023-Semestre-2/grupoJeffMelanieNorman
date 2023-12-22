@@ -10,13 +10,22 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
+ * RegistroProductos
+ * 
  * Clase que maneja el registro de productos y artículos.
+ * 
  * @author Norman
  */
 
 public class RegistroProductos {
     // Atributos
+    /**
+     * Lista de productos existentes.
+     */
     public JSONArray listaProductos;
+    /**
+     * Lista de artículos existentes.
+     */
     public JSONArray listaArticulos;
     private int ultimoCodigoArticulo;
     private static final String FILE_PATH = "Productos.json";
@@ -82,13 +91,13 @@ public class RegistroProductos {
 
     /**
      * Agrega un nuevo artículo al registro de productos.
-     * 
      * @param nombre el nombre del artículo
      * @param tipoArticulo el tipo de artículo
      * @param tamano el tamaño del artículo
      * @param marca la marca del artículo
      * @param cantidad la cantidad disponible del artículo
      * @param precio el precio del artículo
+     * @return el objeto JSONObject del artículo recién creado
      */
     public JSONObject agregarArticulo(String nombre, String tipoArticulo, String tamano, String marca, int cantidad, int precio) {
         ultimoCodigoArticulo++;
@@ -117,7 +126,6 @@ public class RegistroProductos {
 
     /**
     * Busca un objeto JSONObject en la lista de artículos por su código.
-    * 
     * @param codigo El código del artículo a buscar.
     * @return El objeto JSONObject correspondiente al código especificado, o null si no se encuentra.
     */
@@ -134,7 +142,6 @@ public class RegistroProductos {
     
     /**
     * Busca un objeto JSONObject en la lista de artículos por su nombre.
-    * 
     * @param nombre el nombre del artículo a buscar
     * @return el objeto JSONObject correspondiente al artículo encontrado, o null si no se encuentra
     */
@@ -150,7 +157,6 @@ public class RegistroProductos {
 
     /**
      * Obtiene el código del tipo de producto a partir de un archivo JSON.
-     * 
      * @param tipoArticulo el nombre del tipo de artículo a buscar
      * @return el código del tipo de producto encontrado, o 0 si no se encuentra o hay un error
      */
@@ -177,7 +183,6 @@ public class RegistroProductos {
 
     /**
      * Configura el JComboBox de tamaños con los valores proporcionados.
-     * 
      * @param comboBoxTamanos El JComboBox de tamaños a configurar.
      */
     private void configurarComboBoxTamanos(JComboBox<String> comboBoxTamanos) {
@@ -189,7 +194,6 @@ public class RegistroProductos {
 
     /**
     * Realiza una búsqueda en la lista de artículos según el criterio de búsqueda y el valor proporcionados.
-    * 
     * @param criterioBusqueda el criterio de búsqueda (1 para búsqueda por código, 2 para búsqueda por nombre)
     * @param valorBusqueda el valor a buscar
     * @return el objeto JSONObject encontrado, o null si no se encontró ningún artículo que cumpla con el criterio de búsqueda
@@ -246,7 +250,6 @@ public class RegistroProductos {
 
     /**
      * Elimina un artículo de la lista y guarda los cambios en el archivo JSON.
-     * 
      * @param articulo el artículo a eliminar
      */
     public void eliminar(JSONObject articulo) {

@@ -11,6 +11,9 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
+ * VentanaModificarCliente
+ * 
+ * Esta clase se encarga de mostrar la ventana de modificar cliente
  *
  * @author Melanie
  */
@@ -18,6 +21,7 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaModificarCliente
+     * @param cliente El cliente a modificar.
      */
     public VentanaModificarCliente(Cliente cliente) {
         initComponents();
@@ -195,30 +199,91 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * main para iniciar el programa.
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Boton para agregar 
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * ComboBox para seleccionar
+     */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel10;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel11;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel9;
+    /**
+     * Panel para mostrar
+     */
     private javax.swing.JTextField jTextField1;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField2;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField3;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField4;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField5;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField6;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
     

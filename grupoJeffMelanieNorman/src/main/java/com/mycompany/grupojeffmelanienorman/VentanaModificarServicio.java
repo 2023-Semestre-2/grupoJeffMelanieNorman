@@ -5,6 +5,9 @@
 package com.mycompany.grupojeffmelanienorman;
 
 /**
+ * VentanaModificarServicio
+ * 
+ * Esta clase se encarga de mostrar la ventana de modificar servicio
  *
  * @author Melanie
  */
@@ -159,6 +162,7 @@ public class VentanaModificarServicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * main para iniciar el programa.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -194,22 +198,73 @@ public class VentanaModificarServicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Boton para modificar
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * ComboBox para seleccionar
+     */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel9;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField1;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField2;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField3;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField4;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField5;
+    /**
+     * TextField para ingresar
+     */
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

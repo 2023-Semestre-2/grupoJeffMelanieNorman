@@ -12,14 +12,21 @@ import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 /**
+ * ManejoFacturas
+ * 
+ * Esta clase se encarga de manejar las facturas
  *
- * @author XPC
+ * @author Jeffry
  */
 public class ManejoFacturas {
     // Atributos
     private ArrayList<Factura> facturas;
     private final String fileName = "grupoJeffMelanieNorman/Facturas.json";
 
+    /**
+     * Constructor para la clase ManejoFacturas.
+     * Inicializa la lista de facturas leyendo el archivo JSON.
+     */
     public ManejoFacturas() {
         cargarDatos();
     }
@@ -49,7 +56,6 @@ public class ManejoFacturas {
 
     /**
      * Obtiene la lista de facturas.
-     * 
      * @return la lista de facturas
      */
     public ArrayList<Factura> getFacturas() {
@@ -79,7 +85,6 @@ public class ManejoFacturas {
 
     /**
      * Agrega una factura al conjunto de facturas y guarda los datos actualizados.
-     * 
      * @param factura la factura a agregar
      */
     public void agregarFactura(Factura factura){
@@ -89,7 +94,6 @@ public class ManejoFacturas {
 
     /**
      * Anula una factura dado su ID.
-     * 
      * @param idFactura el ID de la factura a anular
      */
     public void anularFactura(int idFactura){

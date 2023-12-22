@@ -21,6 +21,9 @@ import java.text.ParseException;
 //import org.json.simple.parser.ParseException;
 
 /**
+ * ManejoDeCliente
+ * 
+ * Esta clase se encarga de manejar los clientes
  *
  * @author Jeffry
  */
@@ -29,22 +32,26 @@ public class ManejoDeCliente {
     private ArrayList<Cliente> clientes;
     private final String fileName = "grupoJeffMelanieNorman/Clientes.json";
     private int ultimoCodigo;
-    // Constructor
+    
+    /**
+     * Constructor para la clase ManejoDeCliente.
+     * Inicializa la lista de clientes leyendo el archivo JSON.
+     */
     public ManejoDeCliente() {
         this.cargarDatos();
     }
 
     /**
      * Crea un nuevo cliente
-     * @param idCliente
-     * @param nombre
-     * @param apellido
-     * @param provincia
-     * @param canton
-     * @param distrito
-     * @param telefono
-     * @param email
-     * @param fechaDeNacimiento
+     * @param idCliente identificador del cliente
+     * @param nombre nombre del cliente
+     * @param apellido apellido del cliente
+     * @param provincia provincia del cliente
+     * @param canton canton del cliente
+     * @param distrito distrito del cliente
+     * @param telefono telefono del cliente
+     * @param email email del cliente
+     * @param fechaDeNacimiento fecha de nacimiento del cliente
      */
     private void actualizarUltimoCodigo() {
         if (!clientes.isEmpty()) {
@@ -52,6 +59,18 @@ public class ManejoDeCliente {
             ultimoCodigo = ultimoCliente.getIdCliente();
         }
     }
+    
+    /** 
+     * Crea un nuevo cliente
+     * @param nombre nombre del cliente 
+     * @param apellido apellido del cliente
+     * @param provincia provincia del cliente
+     * @param canton canton del cliente
+     * @param distrito distrito del cliente
+     * @param telefono telefono del cliente
+     * @param email email del cliente
+     * @param fechaDeNacimiento fecha de nacimiento del cliente
+     */
     public void crearCliente(String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento){
         ultimoCodigo++;
         if(telefonoValido(telefono)){
@@ -71,16 +90,25 @@ public class ManejoDeCliente {
         }
     }
 
+    /**
+     * Devuelve la lista de clientes.
+     * @return la lista de clientes.
+     */
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
 
+    /**
+     * Establece la lista de clientes.
+     * @param clientes la lista de clientes a establecer
+     */
     public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
     }
 
     /**
      * Carga los datos de los clientes desde un archivo JSON y los agrega a la lista de clientes.
+     * Si el archivo no existe, crea uno nuevo.
      */
     private void cargarDatos(){
         JSONParser parser = new JSONParser();
@@ -118,6 +146,7 @@ public class ManejoDeCliente {
 
     /**
      * Guarda los datos de los clientes en un archivo JSON.
+     * Si el archivo no existe, crea uno nuevo.
      */
     private void guardarDatos(){
         JSONArray listaClientes = new JSONArray();
@@ -146,16 +175,9 @@ public class ManejoDeCliente {
     }
 
     /**
-     * Modifica un cliente existente
-     * @param idCliente
-     * @param nombre
-     * @param apellido
-     * @param provincia
-     * @param canton
-     * @param distrito
-     * @param telefono
-     * @param email
-     * @param fechaDeNacimiento
+     * Obtiene el largo de una cadena de texto.
+     * @param numero la cadena de texto de la cual se desea obtener el largo.
+     * @return el largo de la cadena de texto.
      */
     public int largo(String numero){
         int cont=0;
@@ -169,7 +191,6 @@ public class ManejoDeCliente {
 
     /**
      * Obtiene el número de una cadena de texto.
-     * 
      * @param numero la cadena de texto de la cual se desea obtener el número.
      * @return el número contenido en la cadena de texto.
      */
@@ -185,7 +206,6 @@ public class ManejoDeCliente {
 
     /**
      * Verifica si un número de teléfono es válido.
-     * 
      * @param num el número de teléfono a verificar
      * @return true si el número de teléfono es válido, false de lo contrario
      */
@@ -196,7 +216,6 @@ public class ManejoDeCliente {
 
     /**
      * Verifica si un correo electrónico es válido.
-     * 
      * @param email el correo electrónico a verificar
      * @return true si el correo electrónico es válido, false de lo contrario
      */
@@ -212,7 +231,6 @@ public class ManejoDeCliente {
 
     /**
      * Verifica si una fecha dada es válida.
-     * 
      * @param fecha La fecha en formato "dd/MM/yyyy" a validar.
      * @return true si la fecha es válida, false de lo contrario.
      */
@@ -236,7 +254,6 @@ public class ManejoDeCliente {
 
     /**
      * Modifica los datos de un cliente existente en la lista de clientes.
-     * 
      * @param idCliente el identificador del cliente a modificar
      * @param nombre el nuevo nombre del cliente
      * @param apellido el nuevo apellido del cliente
@@ -275,7 +292,7 @@ public class ManejoDeCliente {
 
     /**
      * Elimina un cliente existente
-     * @param idCliente
+     * @param idCliente el identificador del cliente a eliminar
      */
     public void eliminarCliente(int idCliente){
         for(int i = 0; i < clientes.size(); i++){

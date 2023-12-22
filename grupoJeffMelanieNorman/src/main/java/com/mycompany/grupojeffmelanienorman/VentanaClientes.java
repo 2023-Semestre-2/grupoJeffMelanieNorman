@@ -12,11 +12,20 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
+ * VentanaClientes
+ * 
+ * Esta es la ventana que se encarga de mostrar los clientes registrados en el sistema.
  *
  * @author Melanie
  */
 public class VentanaClientes extends javax.swing.JFrame {
+    /**
+     * Mapa de clientes
+     */
     Map<String, Cliente> mapClientes;
+    /**
+     * Cliente actual
+     */
     Cliente clienteActual;
     /**
      * Creates new form VentanaClientes
@@ -181,18 +190,28 @@ public class VentanaClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /** 
+     * Este método se encarga de seleccionar un cliente.
+     * @param args[] Acciona el botón de seleccionar.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+    /** 
+     * Este método se encarga de eliminar un cliente.
+     * @param args[] Acciona el botón de eliminar.
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
+     * Este método se encarga de agregar un cliente.
      * @param args the command line arguments
      */
-   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -226,11 +245,29 @@ public class VentanaClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Boton para agregar
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * Boton para agregar
+     */
     private javax.swing.JButton jButton2;
+    /**
+     * Boton para agregar
+     */
     private javax.swing.JButton jButton3;
+    /**
+     * Boton para agregar
+     */
     private javax.swing.JButton jButton4;
+    /**
+     * ComboBox para seleccionar
+     */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

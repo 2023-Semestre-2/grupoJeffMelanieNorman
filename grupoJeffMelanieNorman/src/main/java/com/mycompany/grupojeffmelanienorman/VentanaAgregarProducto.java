@@ -9,6 +9,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JOptionPane;
 /**
+ * VentanaAgregarProducto
+ * 
+ * Esta clase se encarga de mostrar la ventana de agregar producto
  *
  * @author Melanie
  */
@@ -214,6 +217,7 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * main para iniciar la ventana de agregar producto.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -249,22 +253,73 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * jButton1 es el botón para agregar un producto.
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * jComboBox1 es el combobox para seleccionar el tipo de producto.
+     */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * jComboBox2 es el combobox para seleccionar el tamaño de la bicicleta.
+     */
     private javax.swing.JComboBox<String> jComboBox2;
+    /**
+     * jLabel1 es el label para el título de la ventana.
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * jLabel2 es el label para el nombre del producto.
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * jLabel3 es el label para el tipo de producto.
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * jLabel4 es el label para el tamaño de la bicicleta.
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * jLabel5 es el label para la marca del producto.
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * jLabel6 es el label para el precio del producto.
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * jLabel7 es el label para el precio del producto.
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * jLabel8 es el label para la cantidad del producto.
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * jLabel9 es el label para la cantidad del producto.
+     */
     private javax.swing.JLabel jLabel9;
+    /**
+     * jPanel1 es el panel principal de la ventana.
+     */
     private javax.swing.JPanel jPanel1;
+    /**
+     * jTextField1 es el campo de texto para el nombre del producto.
+     */
     private javax.swing.JTextField jTextField1;
+    /**
+     * jTextField2 es el campo de texto para la marca del producto.
+     */
     private javax.swing.JTextField jTextField2;
+    /**
+     * jTextField3 es el campo de texto para el precio del producto.
+     */
     private javax.swing.JTextField jTextField3;
+    /**
+     * jTextField4 es el campo de texto para la cantidad del producto.
+     */
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

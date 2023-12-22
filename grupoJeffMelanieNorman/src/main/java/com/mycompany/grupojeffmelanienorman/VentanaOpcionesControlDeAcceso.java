@@ -8,7 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
+ * VentanaOpcionesControlDeAcceso
+ * 
+ * Esta clase se encarga de mostrar la ventana de opciones de control de acceso
+ * 
  * @author Melanie
  */
 public class VentanaOpcionesControlDeAcceso extends javax.swing.JFrame {
@@ -146,23 +149,44 @@ public class VentanaOpcionesControlDeAcceso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /** 
+     * Botoón para registrar productos
+     * @param args[] Este metodo se encarga de registrar productos
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    /** 
+     * Boton para registrar clientes
+     * @param args[] Este metodo se encarga de registrar clientes
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+    /** 
+     * Boton para facturar productos
+     * @param args[] Este metodo se encarga de facturar productos
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    
+    /** 
+     * Boton para seleccionar
+     * @param args[] Este metodo se encarga de seleccionar
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
+     * main para iniciar el programa.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -198,10 +222,25 @@ public class VentanaOpcionesControlDeAcceso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Boton para seleccionar
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * Boton para seleccionar
+     */
     private javax.swing.JButton jButton2;
+    /**
+     * Boton para seleccionar
+     */
     private javax.swing.JButton jButton3;
+    /**
+     * Boton para seleccionar
+     */
     private javax.swing.JButton jButton4;
+    /**
+     * Panel para seleccionar
+     */
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

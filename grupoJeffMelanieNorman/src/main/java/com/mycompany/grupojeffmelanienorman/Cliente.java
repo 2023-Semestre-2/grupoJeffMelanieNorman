@@ -7,7 +7,10 @@ package com.mycompany.grupojeffmelanienorman;
 import java.util.ArrayList;
 
 /**
- *
+ * Cliente
+ * 
+ * Esta clase se encarga de manejar las facturas
+ * 
  * @author Jeffry
  */
 public class Cliente {
@@ -24,16 +27,17 @@ public class Cliente {
     private ArrayList<Factura> facturas = new ArrayList<Factura>();
 
     /**
-     * @param idCliente
-     * @param nombre
-     * @param apellido
-     * @param provincia
-     * @param canton
-     * @param distrito
-     * @param telefono
-     * @param email
-     * @param fechaDeNacimiento
-     * @param facturas 
+     * Constructor para la clase Cliente.
+     * @param idCliente El identificador único del cliente.
+     * @param nombre El nombre del cliente.
+     * @param apellido El apellido del cliente.
+     * @param provincia La provincia donde vive el cliente.
+     * @param canton El cantón donde vive el cliente.
+     * @param distrito El distrito donde vive el cliente.
+     * @param telefono El número de teléfono del cliente.
+     * @param email El correo electrónico del cliente.
+     * @param fechaDeNacimiento La fecha de nacimiento del cliente.
+     * @param facturas La lista de facturas del cliente.
      */
     public Cliente(int idCliente, String nombre, String apellido, String provincia, String canton, String distrito, String telefono, String email, String fechaDeNacimiento, ArrayList<Factura> facturas) {
         this.idCliente = idCliente;
@@ -51,7 +55,6 @@ public class Cliente {
 
     /**
      * Devuelve el nombre del cliente.
-     *
      * @return el nombre del cliente.
      */
     public String getNombre() {
@@ -60,7 +63,6 @@ public class Cliente {
 
     /**
      * Establece el nombre del cliente.
-     * 
      * @param nombre el nombre del cliente
      */
     public void setNombre(String nombre) {
@@ -69,7 +71,6 @@ public class Cliente {
 
     /**
      * Obtiene el apellido del cliente.
-     * 
      * @return el apellido del cliente
      */
     public String getApellido() {
@@ -78,7 +79,6 @@ public class Cliente {
 
     /**
      * Establece el apellido del cliente.
-     * 
      * @param apellido el apellido del cliente
      */
     public void setApellido(String apellido) {
@@ -87,7 +87,6 @@ public class Cliente {
 
     /**
      * Devuelve la provincia del cliente.
-     * 
      * @return la provincia del cliente
      */
     public String getProvincia() {
@@ -95,8 +94,7 @@ public class Cliente {
     }
 
     /**
-     * Establece la provincia del cliente.
-     * 
+     * Establece la provincia del cliente
      * @param provincia la provincia del cliente
      */
     public void setProvincia(String provincia) {
@@ -105,7 +103,6 @@ public class Cliente {
 
     /**
      * Devuelve el cantón del cliente.
-     * 
      * @return el cantón del cliente
      */
     public String getCanton() {
@@ -114,7 +111,6 @@ public class Cliente {
 
     /**
      * Establece el cantón del cliente.
-     * 
      * @param canton el cantón del cliente
      */
     public void setCanton(String canton) {
@@ -123,7 +119,6 @@ public class Cliente {
 
     /**
      * Devuelve el distrito del cliente.
-     * 
      * @return el distrito del cliente
      */
     public String getDistrito() {
@@ -132,7 +127,6 @@ public class Cliente {
 
     /**
      * Establece el distrito del cliente.
-     * 
      * @param distrito el distrito del cliente
      */
     public void setDistrito(String distrito) {
@@ -141,7 +135,6 @@ public class Cliente {
 
     /**
      * Obtiene el número de teléfono del cliente.
-     * 
      * @return el número de teléfono del cliente
      */
     public String getTelefono() {
@@ -150,7 +143,6 @@ public class Cliente {
 
     /**
      * Establece el número de teléfono del cliente.
-     * 
      * @param telefono el número de teléfono a establecer
      */
     public void setTelefono(String telefono) {
@@ -159,7 +151,6 @@ public class Cliente {
 
     /**
      * Devuelve el correo electrónico del cliente.
-     * 
      * @return el correo electrónico del cliente
      */
     public String getEmail() {
@@ -168,7 +159,6 @@ public class Cliente {
 
     /**
      * Establece el correo electrónico del cliente.
-     * 
      * @param email el correo electrónico a establecer
      */
     public void setEmail(String email) {
@@ -177,7 +167,6 @@ public class Cliente {
 
     /**
      * Obtiene la fecha de nacimiento del cliente.
-     * 
      * @return la fecha de nacimiento del cliente
      */
     public String getFechaDeNacimiento() {
@@ -186,31 +175,37 @@ public class Cliente {
 
     /**
      * Establece la fecha de nacimiento del cliente.
-     * 
      * @param fechaDeNacimiento la fecha de nacimiento a establecer
      */
     public void setFechaDeNacimiento(String fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
     /**
-     * @return 
+     * Obtiene el identificador único del cliente.
+     * @return idCliente el identificador único del cliente
      */
     public int getIdCliente() {
         return idCliente;
     }
 
+    
+    /** 
+     * Setea el identificador único del cliente.
+     * @param idCliente  el identificador único del cliente
+     */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
     /**
-     * @return facturas
+     * Obtiene la lista de facturas del cliente.
+     * @return facturas en un ArrayList
      */
     public ArrayList<Factura> getFacturas() {
         return facturas;
     }
     /**
-     * 
-     * @param facturas 
+     * Setea la lista de facturas del cliente.
+     * @param facturas en un ArrayList
      */
     public void setFacturas(ArrayList<Factura> facturas) {
         this.facturas = facturas;
