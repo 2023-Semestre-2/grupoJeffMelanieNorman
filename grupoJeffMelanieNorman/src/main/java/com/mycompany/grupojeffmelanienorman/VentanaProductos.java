@@ -15,15 +15,21 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
+ * VentanaProductos
  *
+ * Esta clase se encarga de mostrar la ventana de productos
+ * 
  * @author Melanie
  */
 public class VentanaProductos extends javax.swing.JFrame {
-
     /**
      * Creates new form VentanaProductos
      */
     JSONObject articuloSeleccionado;
+
+    /**
+     * Constructor para la clase VentanaProductos.
+     */
     public VentanaProductos() {
         articuloSeleccionado=null;
         initComponents();
@@ -184,11 +190,10 @@ public class VentanaProductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
     
+    /**
+     * Action para abrir ventana
+     */
     Action abrirVentana = new AbstractAction("Abrir Ventana") {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -196,6 +201,11 @@ public class VentanaProductos extends javax.swing.JFrame {
             
         }
     };
+    
+    /** 
+     * Boton para seleccionar
+     * @param args[] Este metodo se encarga de seleccionar
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -229,12 +239,33 @@ public class VentanaProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Boton para seleccionar
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * Boton para agregar
+     */
     private javax.swing.JButton jButton2;
+    /**
+     * Boton para modificar
+     */
     private javax.swing.JButton jButton3;
+    /**
+     * Boton para eliminar
+     */
     private javax.swing.JButton jButton4;
+    /**
+     * ComboBox para seleccionar
+     */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Panel para mostrar
+     */
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

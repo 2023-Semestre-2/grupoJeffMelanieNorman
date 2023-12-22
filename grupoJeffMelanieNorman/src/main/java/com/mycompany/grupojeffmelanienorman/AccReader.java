@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.io.FileReader;
 
 /**
+ * AccReader
+ * 
  * Clase que lee un archivo de acceso y devuelve una lista de objetos Usuario.
  * 
  * @author Jeffry
@@ -18,6 +20,11 @@ public class AccReader {
     // Atributos
     private static final String fileName = "grupoJeffMelanieNorman/usuarios.acc";
     private ArrayList<Usuario> usuarios;
+
+    /**
+    * Constructor para la clase AccReader.
+    * Inicializa la lista de usuarios leyendo el archivo de acceso.
+    */
     public AccReader(){
         usuarios=leerArchivoAcc();
     }

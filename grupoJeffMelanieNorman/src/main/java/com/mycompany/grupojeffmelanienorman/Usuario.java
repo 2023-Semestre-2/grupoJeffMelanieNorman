@@ -5,8 +5,11 @@
 package com.mycompany.grupojeffmelanienorman;
 
 /**
+ * Cliente
+ * 
+ * Esta clase se encarga de manejar las facturas
  *
- * @author XPC
+ * @author Jeffry
  */
 public class Usuario {
     // Atributos
@@ -14,7 +17,11 @@ public class Usuario {
     private String password;
     
 
-    // Constructor
+    /**
+     * Constructor para la clase Usuario.
+     * @param user El nombre de usuario.
+     * @param password La contraseña del usuario.
+     */
     public Usuario(String user, String password) {
         this.user = user;
         this.password = password;
@@ -22,7 +29,6 @@ public class Usuario {
 
     /**
      * Devuelve el usuario.
-     * 
      * @return el usuario
      */
     public String getUser() {
@@ -31,7 +37,6 @@ public class Usuario {
 
     /**
      * Establece el usuario para el control de acceso.
-     * 
      * @param user el nombre de usuario a establecer
      */
     public void setUser(String user) {
@@ -40,7 +45,6 @@ public class Usuario {
 
     /**
      * Devuelve la contraseña.
-     * 
      * @return la contraseña como una cadena de caracteres.
      */
     public String getPassword() {
@@ -49,7 +53,6 @@ public class Usuario {
 
     /**
      * Establece la contraseña para el control de acceso.
-     * 
      * @param password la contraseña a establecer
      */
     public void setPassword(String password) {

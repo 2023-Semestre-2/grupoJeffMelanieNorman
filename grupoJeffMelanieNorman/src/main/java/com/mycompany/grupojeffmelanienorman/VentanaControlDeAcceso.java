@@ -11,11 +11,13 @@ import javax.swing.Action;
 import javax.swing.JOptionPane;
 
 /**
+ * VentanaControlDeAcceso
+ * 
+ * Esta clase se encarga de mostrar la ventana de control de acceso
  *
  * @author Melanie
  */
 public class VentanaControlDeAcceso extends javax.swing.JFrame {
-
     /**
      * Creates new form VentanaControlDeAccesol
      */
@@ -120,6 +122,7 @@ public class VentanaControlDeAcceso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * main para iniciar el programa.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -155,7 +158,9 @@ public class VentanaControlDeAcceso extends javax.swing.JFrame {
         });
     }
     
-    
+    /**
+     * Action para abrir la ventana de crear usuario
+     */
     Action abrirVentana = new AbstractAction("Abrir Ventana") {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -165,11 +170,29 @@ public class VentanaControlDeAcceso extends javax.swing.JFrame {
         }
     };
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Boton para ingresar
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * Campo de texto para ingresar
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * Campo de texto para ingresar
+     */
     private javax.swing.JPanel jPanel1;
+    /**
+     * Campo de texto para ingresar
+     */
     private javax.swing.JPasswordField jPasswordField1;
+    /**
+     * Campo de texto para ingresar
+     */
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

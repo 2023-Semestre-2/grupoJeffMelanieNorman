@@ -10,15 +10,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * ManejoFacturas
+ * 
  * Clase que maneja los servicios de mantenimiento de bicicletas.
+ * 
  * @author Norman
  */
 
 public class Mantenimiento {
+    // Atributos
+    /**
+     * Lista de servicios de mantenimiento.
+     */
     public JSONArray listaServicios;
     private int ultimoCodigoServicio;
     private static final String FILE_PATH = "grupoJeffMelanieNorman/Mantenimiento.json";
 
+    /**
+     * Constructor para la clase Mantenimiento.
+     * Inicializa la lista de servicios leyendo el archivo JSON.
+     */
     public Mantenimiento() {
         cargarDatos();
     }
@@ -69,7 +80,6 @@ public class Mantenimiento {
 
     /**
      * Busca un cliente por su código y devuelve el nombre del cliente.
-     * 
      * @param codigoCliente el código del cliente a buscar
      * @return el nombre del cliente si se encuentra, o null si no se encuentra el cliente
      */
@@ -129,7 +139,6 @@ public class Mantenimiento {
     
     /**
      * Modifica los datos de un servicio en el sistema.
-     * 
      * @param servicio el objeto JSON que representa el servicio a modificar
      * @param marcaBicicleta la marca de la bicicleta del servicio
      * @param descripcionBicicleta la descripción de la bicicleta del servicio
@@ -155,8 +164,8 @@ public class Mantenimiento {
     
     /**
      * Busca un servicio por su código y devuelve el servicio.
-     * @param criterioBusqueda
-     * @param valorBusqueda 
+     * @param criterioBusqueda 1 para buscar por código del servicio, 2 para buscar por nombre del cliente
+     * @param valorBusqueda  el valor a buscar
      * @return el servicio si se encuentra, o null si no se encuentra el servicio
      */
     public JSONObject buscar(int criterioBusqueda, String valorBusqueda) {
@@ -205,7 +214,6 @@ public class Mantenimiento {
 
     /**
      * Modifica un servicio existente en el sistema.
-     * 
      * @param servicio el objeto JSON que representa el servicio a modificar
      * @param marcaBicicleta la marca de la bicicleta asociada al servicio
      * @param descripcionBicicleta la descripción de la bicicleta asociada al servicio
