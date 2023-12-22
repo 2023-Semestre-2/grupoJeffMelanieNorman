@@ -19,9 +19,13 @@ import org.json.simple.JSONObject;
  * @author Melanie
  */
 public class VentanaModificarServicio extends javax.swing.JFrame {
+    /**
+     * Mapa de clientes
+     */
     Map<String,Cliente>mapClientes;
     /**
      * Creates new form VentanaModificarServicio
+     * @param servicio servicio que se quiere modificar
      */
     public VentanaModificarServicio(JSONObject servicio) {
         mapClientes=null;
@@ -251,10 +255,25 @@ public class VentanaModificarServicio extends javax.swing.JFrame {
      * ComboBox para seleccionar
      */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * ComboBox para seleccionar
+     */
     private javax.swing.JComboBox<String> jComboBox2;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel10;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel11;
+    /**
+     * Label para mostrar
+     */
     private javax.swing.JLabel jLabel2;
     /**
      * Label para mostrar

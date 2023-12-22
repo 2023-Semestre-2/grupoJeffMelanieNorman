@@ -5,13 +5,17 @@
 package com.mycompany.grupojeffmelanienorman;
 
 /**
+ * VentaDetalleCliente
  *
+ * Clase que muestra los detalles de un cliente.
+ * 
  * @author Melanie
  */
 public class VentanaDetalleCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaDetalleCliente
+     * @param cliente cliente del cual se quieren ver los detalles
      */
     public VentanaDetalleCliente(Cliente cliente) {
         jLabel3.setText(cliente.getNombre());
@@ -163,22 +167,73 @@ public class VentanaDetalleCliente extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * jLabel1 etiqueta de detalle cliente seleccionado
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * jLabel10 etiqueta de provincia
+     */
     private javax.swing.JLabel jLabel10;
+    /**
+     * jLabel11 etiqueta de canton
+     */
     private javax.swing.JLabel jLabel11;
+    /**
+     * jLabel12 etiqueta de distrito
+     */
     private javax.swing.JLabel jLabel12;
+    /**
+     * jLabel13 etiqueta de fecha de nacimiento
+     */
     private javax.swing.JLabel jLabel13;
+    /**
+     * jLabel14 etiqueta de fecha
+     */
     private javax.swing.JLabel jLabel14;
+    /**
+     * jLabel15 
+     */
     private javax.swing.JLabel jLabel15;
+    /**
+     * jLabel16 
+     */
     private javax.swing.JLabel jLabel16;
+    /**
+     * jLabel17 
+     */
     private javax.swing.JLabel jLabel17;
+    /**
+     * jLabel2 etiqueta de nombre
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * jLabel3 
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * jLabel4 
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * jLabel5 
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * jLabel6 
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * jLabel7 
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * jLabel8 
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * jLabel9 
+     */
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

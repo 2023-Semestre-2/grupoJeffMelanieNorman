@@ -289,9 +289,21 @@ public class VentanaAgregarServicio extends javax.swing.JFrame {
      * jComboBox1 para seleccionar un cliente
      */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * jComboBox2 para seleccionar el estado del servicio de mantenimiento
+     */
     private javax.swing.JComboBox<String> jComboBox2;
+    /**
+     * jLabel1 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * jLabel10 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel10;
+    /**
+     * jLabel11 para agregar un servicio de mantenimiento
+     */
     private javax.swing.JLabel jLabel2;
     /**
      * jLabel3 para agregar un servicio de mantenimiento

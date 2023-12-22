@@ -7,6 +7,9 @@ package com.mycompany.grupojeffmelanienorman;
 import org.json.simple.JSONObject;
 
 /**
+ * VentanaDetalleProducto
+ * 
+ * Clase que muestra los detalles de un producto.
  *
  * @author Melanie
  */
@@ -14,6 +17,7 @@ public class VentanaDetalleProducto extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaDetalleProducto
+     * @param producto producto del cual se quieren ver los detalles
      */
     public VentanaDetalleProducto(JSONObject producto) {
         jLabel3.setText((String) producto.get("Nombre"));
@@ -171,21 +175,69 @@ public class VentanaDetalleProducto extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * jLabel1
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * jLabel10
+     */
     private javax.swing.JLabel jLabel10;
+    /**
+     * jLabel11
+     */
     private javax.swing.JLabel jLabel11;
+    /**
+     * jLabel12
+     */
     private javax.swing.JLabel jLabel12;
+    /**
+     * jLabel13
+     */
     private javax.swing.JLabel jLabel13;
+    /**
+     * jLabel14
+     */
     private javax.swing.JLabel jLabel14;
+    /**
+     * jLabel15
+     */
     private javax.swing.JLabel jLabel15;
+    /**
+     * jLabel16
+     */
     private javax.swing.JLabel jLabel16;
+    /**
+     * jLabel2
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * jLabel3
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * jLabel4
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * jLabel5
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * jLabel6
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * jLabel7
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * jLabel8
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * jLabel9
+     */
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

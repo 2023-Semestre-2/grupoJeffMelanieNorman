@@ -5,6 +5,9 @@
 package com.mycompany.grupojeffmelanienorman;
 
 /**
+ * VentanaDetalleFactura
+ * 
+ * Clase que muestra los detalles de una factura.
  *
  * @author Melanie
  */
@@ -43,6 +46,7 @@ public class VentanaDetalleFactura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * VentanaDetalleFactura main
      * @param args the command line arguments
      */
     public static void main(String args[]) {

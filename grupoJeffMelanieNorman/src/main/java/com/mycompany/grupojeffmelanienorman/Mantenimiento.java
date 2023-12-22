@@ -105,7 +105,6 @@ public class Mantenimiento {
     
     /**
      * Agrega un nuevo servicio a la lista de servicios. El nuevo servicio se crea con los datos recibidos como parámetros.
-     * @param codigoCliente código del cliente
      * @param marcaBicicleta marca de la bicicleta
      * @param descripcionBicicleta descripción de la bicicleta
      * @param precio precio del servicio
@@ -140,6 +139,7 @@ public class Mantenimiento {
     /**
      * Modifica los datos de un servicio en el sistema.
      * @param servicio el objeto JSON que representa el servicio a modificar
+     * @param cliente el cliente seleccionado
      * @param marcaBicicleta la marca de la bicicleta del servicio
      * @param descripcionBicicleta la descripción de la bicicleta del servicio
      * @param precio el precio del servicio
