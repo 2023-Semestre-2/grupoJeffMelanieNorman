@@ -45,8 +45,8 @@ public class AccReader {
                 String[] parts = line.split(",");
                 if (parts.length == 2) {
                     String usuario = parts[0];
-                    String contraseña = parts[1];
-                    usuarios.add(new Usuario(usuario, contraseña));
+                    String contrasenna = parts[1];
+                    usuarios.add(new Usuario(usuario, contrasenna));
                 }
             }
 
@@ -122,18 +122,18 @@ public class AccReader {
     }
 
     /**
-     * Verifica si el nombre de usuario y la contraseña proporcionados coinciden con los datos almacenados en la lista de usuarios.
+     * Verifica si el nombre de usuario y la contrasenna proporcionados coinciden con los datos almacenados en la lista de usuarios.
      * 
      * @param nombre el nombre de usuario a verificar
-     * @param contraseña la contraseña a verificar
-     * @return true si el nombre de usuario y la contraseña coinciden, false de lo contrario
+     * @param contrasenna la contrasenna a verificar
+     * @return true si el nombre de usuario y la contrasenna coinciden, false de lo contrario
      */
-    public boolean verificarInicio(String nombre, String contraseña) {
+    public boolean verificarInicio(String nombre, String contrasenna) {
         int indice = buscarUsuario(usuarios, nombre);
         if (indice != -1) {
             Usuario usuario = usuarios.get(indice);
-            String contraseñaGuardada = usuario.getPassword();
-            return contraseña.equals(contraseñaGuardada);
+            String contrasennaGuardada = usuario.getPassword();
+            return contrasenna.equals(contrasennaGuardada);
         } else {
             return false;
         }
