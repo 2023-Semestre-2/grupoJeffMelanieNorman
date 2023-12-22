@@ -103,14 +103,16 @@ public class Mantenimiento {
      * @param fechaEntrega fecha en formato "dd/MM/yyyy"
      * @param observaciones texto con las observaciones del servicio
      * @param estado "Abierto" o "Cerrado"
+     * @param cliente el cliente seleccionado
      * @return el servicio recién creado
      */
-    public JSONObject agregarServicio(int codigoCliente, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
+    public JSONObject agregarServicio(Cliente cliente, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
         ultimoCodigoServicio++;
 
         JSONObject nuevoServicio = new JSONObject();
         nuevoServicio.put("Codigo", ultimoCodigoServicio);
-        nuevoServicio.put("Codigo Cliente", codigoCliente);
+        nuevoServicio.put("Cliente", cliente);
+        nuevoServicio.put("Codigo Cliente", cliente.getIdCliente());
         nuevoServicio.put("Marca Bicicleta", marcaBicicleta.trim());
         nuevoServicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
         nuevoServicio.put("Precio", precio);
@@ -137,7 +139,9 @@ public class Mantenimiento {
      * @param observaciones las observaciones del servicio
      * @param estado el estado del servicio
      */
-    public void modificar(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
+    public void modificar(JSONObject servicio, Cliente cliente, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
+        servicio.put("Cliente", cliente);
+        servicio.put("Codigo Cliente", cliente.getIdCliente());
         servicio.put("Marca Bicicleta", marcaBicicleta.trim());
         servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
         servicio.put("Precio", precio);
@@ -210,8 +214,11 @@ public class Mantenimiento {
      * @param fechaEntrega la fecha de entrega del servicio
      * @param observaciones las observaciones adicionales del servicio
      * @param estado el estado actual del servicio
+     * @param cliente el cliente seleccionado
      */
-    public void modificarServicio(JSONObject servicio, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
+    public void modificarServicio(JSONObject servicio, Cliente cliente, String marcaBicicleta, String descripcionBicicleta, int precio, String fechaRecibido, String fechaEntrega, String observaciones, String estado) {
+        servicio.put("Cliente", cliente);
+        servicio.put("Codigo Cliente", cliente.getIdCliente());
         servicio.put("Marca Bicicleta", marcaBicicleta.trim());
         servicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());
         servicio.put("Precio", precio);

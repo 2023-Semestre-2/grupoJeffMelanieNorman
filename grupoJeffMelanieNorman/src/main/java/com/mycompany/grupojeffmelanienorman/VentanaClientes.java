@@ -41,6 +41,7 @@ public class VentanaClientes extends javax.swing.JFrame {
                     Cliente selectedCliente = mapClientes.get(selectedInfo);
                     if(selectedCliente != null) {
                         clienteActual=selectedCliente;
+                        VentanaDetalleCliente ventana=new VentanaDetalleCliente(clienteActual);
                         jButton3.setVisible(true);
                         jButton4.setVisible(true);
                     }
@@ -65,9 +66,16 @@ public class VentanaClientes extends javax.swing.JFrame {
                     int opcion=JOptionPane.showConfirmDialog(null, mensaje, "Confirmacion de eliminar.", JOptionPane.YES_NO_OPTION);
                     if(opcion==JOptionPane.YES_OPTION){
                         ManejoDeCliente manejo=new ManejoDeCliente();
-                        manejo.eliminarCliente(clienteActual.getIdCliente());
+                        try{
+                            manejo.eliminarCliente(clienteActual.getIdCliente());
+                            JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente.", "Exito.", JOptionPane.INFORMATION_MESSAGE);
+                    
+                        }catch(Exception E){
+                            JOptionPane.showMessageDialog(null, "Error al eliminar cliente.", "Error.", JOptionPane.ERROR_MESSAGE);
+                
+                        }
                     }else{
-                        JOptionPane.showMessageDialog(null, "Cancelado.", "Cancelado.", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Cancelado correctamente.", "Cancelado.", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Debe seleccionar un cliente.", "Error.", JOptionPane.ERROR_MESSAGE);

@@ -58,6 +58,7 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
                     RegistroProductos registro=new RegistroProductos();
                     try{
                         registro.modificar(elementoSeleccionado, nombre, marca, cantidad, precio, tipo, tamano);
+                        JOptionPane.showMessageDialog(null, "Producto modificado correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
                     }catch(Exception E){
                         JOptionPane.showMessageDialog(null, "Error al modificar articulo.", "Error", JOptionPane.ERROR_MESSAGE);
 

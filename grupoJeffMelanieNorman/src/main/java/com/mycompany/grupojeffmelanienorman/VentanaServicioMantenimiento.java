@@ -37,7 +37,8 @@ public class VentanaServicioMantenimiento extends javax.swing.JFrame {
 
         for (Object item : mantenimientos) {
             JSONObject servicio = (JSONObject) item;
-            String nombreservicio = servicio.get("Nombre Cliente").toString()+servicio.get("Codigo Cliente");
+            Cliente cliente=(Cliente) servicio.get("Cliente");
+            String nombreservicio = cliente.getNombre().toString()+servicio.get("Codigo Cliente");
             jComboBox1.addItem(nombreservicio);
 
             mapServicios.put(nombreservicio, servicio);
@@ -53,15 +54,33 @@ public class VentanaServicioMantenimiento extends javax.swing.JFrame {
 
                 if (selectedServicio != null) {
                     servicioActual=selectedServicio;
+                    VentanaDetalleMantenimiento ventana=new VentanaDetalleMantenimiento(servicioActual);
+                    ventana.setVisible(true);
+                }
+            }
+        });
+        jButton3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(servicioActual!=null){
+                    VentanaModificarServicio ventana=new VentanaModificarServicio(servicioActual);
+                    ventana.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar un servicio.", "Error.", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
         jButton4.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(servicioActual!=null){
-                    mantenimiento.eliminar(servicioActual);
+                    try{
+                        mantenimiento.eliminar(servicioActual);
+                        JOptionPane.showMessageDialog(null, "Servicio de mantenimiento eliminado correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    }catch(Exception E){
+                        JOptionPane.showMessageDialog(null, "Error al eliminar servicio de mantenimiento.", "Error.", JOptionPane.ERROR_MESSAGE);
+                
+                    }
                 }else{
-                    JOptionPane.showMessageDialog(null, "Debe seleccionar un cliente.", "Error.", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar un servicio.", "Error.", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

@@ -94,6 +94,8 @@ public class VentanaProductos extends javax.swing.JFrame {
 
                 if (selectedArticulo != null) {
                     articuloSeleccionado=selectedArticulo;
+                    VentanaDetalleProducto ventana=new VentanaDetalleProducto(articuloSeleccionado);
+                    ventana.setVisible(true);
                 }
             }
         });
