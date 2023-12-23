@@ -19,6 +19,12 @@ public class Factura {
     private int total = subTotal + (subTotal * IMPUESTO / 100);
     private boolean estado = true;
     private Mantenimiento mantenimiento;
+    private int codigoServicio;
+    private int cantidad;
+    private int precioUnitario;
+    private int codigoCliente;
+    private String fechaR;
+    
 
     /**
      * Constructor para la clase Factura.
@@ -27,10 +33,8 @@ public class Factura {
      * @param estado El estado de la factura.
      * @param mantenimiento El mantenimiento asociado a la factura.
      */
-    public Factura(int idFactura, int subTotal, boolean estado, Mantenimiento mantenimiento) {
+    public Factura(int idFactura, Mantenimiento mantenimiento) {
         this.idFactura = idFactura;
-        this.subTotal = subTotal;
-        this.estado = estado;
         this.mantenimiento = mantenimiento;
     }
 

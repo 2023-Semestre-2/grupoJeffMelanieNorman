@@ -21,7 +21,7 @@ import org.json.simple.parser.JSONParser;
 public class ManejoFacturas {
     // Atributos
     private ArrayList<Factura> facturas;
-    private final String fileName = "grupoJeffMelanieNorman/Facturas.json";
+    private final String fileName = "Facturas.json";
 
     /**
      * Constructor para la clase ManejoFacturas.
@@ -47,7 +47,7 @@ public class ManejoFacturas {
                 int subTotal = Integer.parseInt(facturaJson.get("subTotal").toString());
                 boolean estado = Boolean.parseBoolean(facturaJson.get("estado").toString());
                 Mantenimiento mantenimiento = new Mantenimiento();
-                Factura factura = new Factura(idFactura, subTotal, estado, mantenimiento);
+                Factura factura = new Factura(idFactura, mantenimiento);
                 this.facturas.add(factura);
             }
         }catch(Exception e){
