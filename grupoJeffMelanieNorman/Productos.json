@@ -1,1 +1,1 @@
-{"Productos":[{"Nombre":"Bicicleta","Codigo":1},{"Nombre":"Accesorio","Codigo":2},{"Nombre":"Suplemento alimenticio","Codigo":3}],"Articulos":[]}
+{"Productos":[{"Nombre":"Bicicleta","Codigo":1},{"Nombre":"Accesorio","Codigo":2},{"Nombre":"Suplemento alimenticio","Codigo":3}],"Articulos":[{"Nombre":"super","Tipo":"Bicicleta","Codigo":1,"Marca":"superpro","Cantidad":80801,"Codigo Tipo":1,"Tamaño":"12","Precio":5}]}

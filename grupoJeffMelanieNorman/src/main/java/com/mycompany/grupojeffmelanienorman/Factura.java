@@ -18,17 +18,20 @@ public class Factura {
     private int subTotal;
     private int total = subTotal + (subTotal * IMPUESTO / 100);
     private boolean estado = true;
+    private Mantenimiento mantenimiento;
 
     /**
      * Constructor para la clase Factura.
      * @param idFactura El identificador único de la factura.
      * @param subTotal El subtotal de la factura.
      * @param estado El estado de la factura.
+     * @param mantenimiento El mantenimiento asociado a la factura.
      */
-    public Factura(int idFactura, int subTotal, boolean estado) {
+    public Factura(int idFactura, int subTotal, boolean estado, Mantenimiento mantenimiento) {
         this.idFactura = idFactura;
         this.subTotal = subTotal;
         this.estado = estado;
+        this.mantenimiento = mantenimiento;
     }
 
     /**
@@ -85,5 +88,21 @@ public class Factura {
      */
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    /**
+     * Devuelve el mantenimiento asociado a la factura.
+     * @return el mantenimiento asociado a la factura
+     */
+    public Mantenimiento getMantenimiento() {
+        return mantenimiento;
+    }
+
+    /**
+     * Establece el mantenimiento asociado a la factura.
+     * @param mantenimiento el mantenimiento asociado a la factura
+     */
+    public void setMantenimiento(Mantenimiento mantenimiento) {
+        this.mantenimiento = mantenimiento;
     }
 }

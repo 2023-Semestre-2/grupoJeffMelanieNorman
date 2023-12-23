@@ -46,7 +46,8 @@ public class ManejoFacturas {
                 int idFactura = Integer.parseInt(facturaJson.get("idFactura").toString());
                 int subTotal = Integer.parseInt(facturaJson.get("subTotal").toString());
                 boolean estado = Boolean.parseBoolean(facturaJson.get("estado").toString());
-                Factura factura = new Factura(idFactura, subTotal, estado);
+                Mantenimiento mantenimiento = new Mantenimiento();
+                Factura factura = new Factura(idFactura, subTotal, estado, mantenimiento);
                 this.facturas.add(factura);
             }
         }catch(Exception e){
@@ -73,6 +74,7 @@ public class ManejoFacturas {
             facturaJson.put("idFactura", factura.getIdFactura());
             facturaJson.put("subTotal", factura.getSubTotal());
             facturaJson.put("estado", factura.isEstado());
+            facturaJson.put("mantenimiento", factura.getMantenimiento());
             listaFacturas.put(facturaJson);
         }
         try (FileWriter file = new FileWriter(fileName)) {
