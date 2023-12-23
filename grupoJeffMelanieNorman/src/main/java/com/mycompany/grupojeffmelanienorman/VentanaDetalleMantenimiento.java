@@ -20,15 +20,16 @@ public class VentanaDetalleMantenimiento extends javax.swing.JFrame {
      * @param servicio servicio del cual se quieren ver los detalles
      */
     public VentanaDetalleMantenimiento(JSONObject servicio) {
-        jLabel3.setText((String) servicio.get("Codigo Cliente"));
+        initComponents();
+        jLabel3.setText(String.valueOf(servicio.get("Codigo Cliente")));
         jLabel5.setText((String) servicio.get("Marca Bicicleta"));
         jLabel7.setText((String) servicio.get("Descripcion Bicicleta"));
         jLabel9.setText((String) servicio.get("Fecha Recibido"));
         jLabel11.setText((String) servicio.get("Fecha Entrega"));
         jLabel13.setText((String) servicio.get("Observaciones"));
-        jLabel15.setText((String) servicio.get("Precio"));
+        jLabel15.setText(String.valueOf(servicio.get("Precio")));
         jLabel15.setText((String) servicio.get("Estado"));
-        initComponents();
+        
     }
 
     /**

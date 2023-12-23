@@ -94,16 +94,11 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="ManejoDeCliente manejoClientes = new ManejoDeCliente();&#xa;ArrayList&lt;Cliente&gt; clientes = manejoClientes.getClientes(); // Asumiendo que hay un m&#xe9;todo getClientes&#xa;if(mapClientes!=null){&#xa;    mapClientes.clear();&#xa;    for(Cliente cliente : clientes) {&#xa;        String clienteInfo = cliente.getIdCliente() + &quot; - &quot; + cliente.getNombre();&#xa;        jComboBox1.addItem(clienteInfo);&#xa;        mapClientes.put(clienteInfo, cliente);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="ManejoDeCliente manejoClientes = new ManejoDeCliente();&#xa;ArrayList&lt;Cliente&gt; clientes = manejoClientes.getClientes(); // Asumiendo que hay un m&#xe9;todo getClientes&#xa;if(mapClientes!=null){&#xa;    mapClientes.clear();&#xa;    if(clientes!=null){&#xa;        for(Cliente cliente : clientes) {&#xa;            String clienteInfo = cliente.getIdCliente() + &quot; - &quot; + cliente.getNombre();&#xa;            jComboBox1.addItem(clienteInfo);&#xa;            mapClientes.put(clienteInfo, cliente);&#xa;        }&#xa;    }&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>

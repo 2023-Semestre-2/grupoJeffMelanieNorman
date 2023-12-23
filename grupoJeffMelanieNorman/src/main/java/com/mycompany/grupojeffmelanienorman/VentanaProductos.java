@@ -70,8 +70,6 @@ public class VentanaProductos extends javax.swing.JFrame {
         jButton2.setAction(abrirVentana);
         jButton2.setText("Agregar");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setText("Productos");
 
         jButton3.setText("Modificar");
@@ -92,8 +90,6 @@ public class VentanaProductos extends javax.swing.JFrame {
 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                jButton3.setVisible(true);
-                jButton4.setVisible(true);
                 String selectedName = (String) jComboBox1.getSelectedItem();
 
                 JSONObject selectedArticulo = mapArticulos.get(selectedName);
@@ -103,6 +99,9 @@ public class VentanaProductos extends javax.swing.JFrame {
                     VentanaDetalleProducto ventana=new VentanaDetalleProducto(articuloSeleccionado);
                     ventana.setVisible(true);
                 }
+                jButton3.setVisible(true);
+                jButton4.setVisible(true);
+
             }
         });
         jButton3.setVisible(false);
@@ -239,33 +238,12 @@ public class VentanaProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    /**
-     * Boton para seleccionar
-     */
     private javax.swing.JButton jButton1;
-    /**
-     * Boton para agregar
-     */
     private javax.swing.JButton jButton2;
-    /**
-     * Boton para modificar
-     */
     private javax.swing.JButton jButton3;
-    /**
-     * Boton para eliminar
-     */
     private javax.swing.JButton jButton4;
-    /**
-     * ComboBox para seleccionar
-     */
     private javax.swing.JComboBox<String> jComboBox1;
-    /**
-     * Label para mostrar
-     */
     private javax.swing.JLabel jLabel1;
-    /**
-     * Panel para mostrar
-     */
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

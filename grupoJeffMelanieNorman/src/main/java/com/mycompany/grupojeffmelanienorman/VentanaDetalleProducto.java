@@ -20,19 +20,20 @@ public class VentanaDetalleProducto extends javax.swing.JFrame {
      * @param producto producto del cual se quieren ver los detalles
      */
     public VentanaDetalleProducto(JSONObject producto) {
+        
+        initComponents();
         jLabel3.setText((String) producto.get("Nombre"));
         jLabel5.setText((String) producto.get("Marca"));
         String tipo=(String) producto.get("Tipo");
         jLabel7.setText(tipo);
-        jLabel9.setText((String) producto.get("Codigo Tipo"));
+        jLabel9.setText(String.valueOf(((Long) producto.get("Codigo Tipo")).intValue()));
         if(tipo.equals("Bicicleta")){
             jLabel10.setVisible(true);
             jLabel11.setVisible(true);
             jLabel11.setText((String) producto.get("Tamaño"));
         }
-        jLabel13.setText((String) producto.get("Cantidad"));
-        jLabel15.setText((String) producto.get("Precio"));
-        initComponents();
+        jLabel13.setText(String.valueOf(producto.get("Cantidad")));
+        jLabel15.setText(String.valueOf(producto.get("Precio")));
     }
 
     /**

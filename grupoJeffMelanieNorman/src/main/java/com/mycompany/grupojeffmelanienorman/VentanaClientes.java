@@ -123,8 +123,6 @@ public class VentanaClientes extends javax.swing.JFrame {
 
         jButton2.setText("Agregar");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jButton3.setText("Modificar");
         jButton3.setVisible(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -145,10 +143,12 @@ public class VentanaClientes extends javax.swing.JFrame {
         ArrayList<Cliente> clientes = manejoClientes.getClientes(); // Asumiendo que hay un método getClientes
         if(mapClientes!=null){
             mapClientes.clear();
-            for(Cliente cliente : clientes) {
-                String clienteInfo = cliente.getIdCliente() + " - " + cliente.getNombre();
-                jComboBox1.addItem(clienteInfo);
-                mapClientes.put(clienteInfo, cliente);
+            if(clientes!=null){
+                for(Cliente cliente : clientes) {
+                    String clienteInfo = cliente.getIdCliente() + " - " + cliente.getNombre();
+                    jComboBox1.addItem(clienteInfo);
+                    mapClientes.put(clienteInfo, cliente);
+                }
             }
         }
 
@@ -253,29 +253,11 @@ public class VentanaClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    /**
-     * Boton para agregar
-     */
     private javax.swing.JButton jButton1;
-    /**
-     * Boton para agregar
-     */
     private javax.swing.JButton jButton2;
-    /**
-     * Boton para agregar
-     */
     private javax.swing.JButton jButton3;
-    /**
-     * Boton para agregar
-     */
     private javax.swing.JButton jButton4;
-    /**
-     * ComboBox para seleccionar
-     */
     private javax.swing.JComboBox<String> jComboBox1;
-    /**
-     * Label para mostrar
-     */
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

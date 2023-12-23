@@ -30,7 +30,7 @@ import java.text.ParseException;
 public class ManejoDeCliente {
     // Atributos
     private ArrayList<Cliente> clientes;
-    private final String fileName = "grupoJeffMelanieNorman/Clientes.json";
+    private final String fileName = "Clientes.json";
     private int ultimoCodigo;
     
     /**
@@ -38,7 +38,8 @@ public class ManejoDeCliente {
      * Inicializa la lista de clientes leyendo el archivo JSON.
      */
     public ManejoDeCliente() {
-        this.cargarDatos();
+        clientes=new ArrayList<Cliente>();
+        cargarDatos();
     }
 
     /**
@@ -54,7 +55,7 @@ public class ManejoDeCliente {
      * @param fechaDeNacimiento fecha de nacimiento del cliente
      */
     private void actualizarUltimoCodigo() {
-        if (!clientes.isEmpty()) {
+        if (clientes!=null && !clientes.isEmpty()) {
             Cliente ultimoCliente = (Cliente) clientes.get(clientes.size() - 1);
             ultimoCodigo = ultimoCliente.getIdCliente();
         }
