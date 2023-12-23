@@ -78,6 +78,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jComboBox1.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;                jButton3.setVisible(false);&#xa;                &#xa;            }&#xa;        });"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
@@ -101,6 +102,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Anular"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton3.setVisible(false);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

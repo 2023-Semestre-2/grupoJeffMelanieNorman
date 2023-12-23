@@ -4,6 +4,8 @@
  */
 package com.mycompany.grupojeffmelanienorman;
 
+import org.json.JSONObject;
+
 /**
  * Factura
  * 
@@ -15,12 +17,52 @@ public class Factura {
     // Atributos
     private int idFactura;
     private final int IMPUESTO = 13;
+    private long impuesto=0;
     private int subTotal;
-    private int total = subTotal + (subTotal * IMPUESTO / 100);
-    private boolean estado = true;
-    private Mantenimiento mantenimiento;
+    private long total = 0;
+    private boolean estado;
+    private JSONObject mantenimiento;
+
+    public long getImpuesto() {
+        return impuesto;
+    }
+
+    public void setImpuesto(long impuesto) {
+        this.impuesto = impuesto;
+    }
+
+    public int getCodigoServicio() {
+        return codigoServicio;
+    }
+
+    public void setCodigoServicio(int codigoServicio) {
+        this.codigoServicio = codigoServicio;
+    }
+
+    public int getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(int precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+
+    public int getCodigoCliente() {
+        return codigoCliente;
+    }
+
+    public void setCodigoCliente(int codigoCliente) {
+        this.codigoCliente = codigoCliente;
+    }
+
+    public String getFechaR() {
+        return fechaR;
+    }
+
+    public void setFechaR(String fechaR) {
+        this.fechaR = fechaR;
+    }
     private int codigoServicio;
-    private int cantidad;
     private int precioUnitario;
     private int codigoCliente;
     private String fechaR;
@@ -33,9 +75,17 @@ public class Factura {
      * @param estado El estado de la factura.
      * @param mantenimiento El mantenimiento asociado a la factura.
      */
-    public Factura(int idFactura, Mantenimiento mantenimiento) {
+    public Factura(int idFactura, String fecha, boolean estado, JSONObject mantenimiento) {
+        this.estado=true;
         this.idFactura = idFactura;
         this.mantenimiento = mantenimiento;
+        this.subTotal=(int) mantenimiento.get("Precio");
+        this.impuesto=subTotal*IMPUESTO/100;
+        this.total = subTotal + impuesto;
+        this.codigoServicio=(int) mantenimiento.get("Codigo");
+        this.precioUnitario=subTotal;
+        this.codigoCliente=(int) mantenimiento.get("Codigo Cliente");
+        this.fechaR=fecha;
     }
 
     /**
@@ -58,7 +108,7 @@ public class Factura {
      * Devuelve el total de la factura.
      * @return el total de la factura
      */
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 
@@ -98,7 +148,7 @@ public class Factura {
      * Devuelve el mantenimiento asociado a la factura.
      * @return el mantenimiento asociado a la factura
      */
-    public Mantenimiento getMantenimiento() {
+    public JSONObject getMantenimiento() {
         return mantenimiento;
     }
 
@@ -106,7 +156,7 @@ public class Factura {
      * Establece el mantenimiento asociado a la factura.
      * @param mantenimiento el mantenimiento asociado a la factura
      */
-    public void setMantenimiento(Mantenimiento mantenimiento) {
+    public void setMantenimiento(JSONObject mantenimiento) {
         this.mantenimiento = mantenimiento;
     }
 }

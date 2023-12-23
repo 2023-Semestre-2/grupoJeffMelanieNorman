@@ -6,6 +6,10 @@ package com.mycompany.grupojeffmelanienorman;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  * VentanaFacturacion
@@ -15,11 +19,12 @@ import java.awt.event.ActionListener;
  * @author Melanie
  */
 public class VentanaFacturacion extends javax.swing.JFrame {
-
+    Factura facturaActual;
     /**
      * Creates new form VentanaFacturacion
      */
     public VentanaFacturacion() {
+        facturaActual=null;
         initComponents();
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -28,24 +33,71 @@ public class VentanaFacturacion extends javax.swing.JFrame {
                 
             }
         });
+        ManejoFacturas manejo = new ManejoFacturas();
+        ArrayList<Factura> facturas = manejo.getFacturas(); 
+        Map<String, Factura> mapServicios = new HashMap<>();
+        if(mapServicios!=null){
+            mapServicios.clear();
+            if(facturas!=null){
+                for (Factura item : facturas) {
+                    Factura factura = item;
+                    ManejoDeCliente man=new ManejoDeCliente();
+                    Cliente cliente=man.buscar(factura.getCodigoCliente());
+                    String nombrefactura = String.valueOf(factura.getIdFactura())+","+factura.getFechaR()+cliente.getNombre();
+                    jComboBox1.addItem(nombrefactura);
+
+                    mapServicios.put(nombrefactura, factura);
+                }
+            }
+        } 
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jButton3.setVisible(true);
+                String selectedName = (String) jComboBox1.getSelectedItem();
+
+                Factura selectedFactura = mapServicios.get(selectedName);
+
+                if (selectedFactura != null) {
+                    facturaActual=selectedFactura;
+                }
+            }
+        });
+        jButton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(facturaActual!=null){
+                    ManejoFacturas manejo=new ManejoFacturas();
+                    try{
+                        manejo.anularFactura(facturaActual.getIdFactura());
+                        JOptionPane.showMessageDialog(null, "Factura anulada correctamente.", "Exito.", JOptionPane.INFORMATION_MESSAGE);
+                    }catch(Exception E){
+                        JOptionPane.showMessageDialog(null, "Error al anular factura.", "Error.", JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                   JOptionPane.showMessageDialog(null, "Debe seleccionar una factura.", "Error.", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
 /**
  * ManejoFacturas 
  * @param facturas Esta clase se encarga de manejar las facturas
  */
-/* ManejoFacturas manejo = new ManejoFacturas();
-        JSONArray facturas = mantenmiento.facturas; // Asumiendo que hay un getter para obtener el JSONArray
-        Map<String, JSONObject> mapServicios = new HashMap<>();
+/*      ManejoFacturas manejo = new ManejoFacturas();
+        ArrayList<Factura> facturas = mantenmiento.facturas; // Asumiendo que hay un getter para obtener el JSONArray
+        Map<String, Factura> mapServicios = new HashMap<>();
+        if(mapServicios!=null){
+            mapServicios.clear();
+            if(facturas!=null){
+                for (Factura item : facturas) {
+                    Factura factura = item;
+                    String nombrefactura = factura.getIdFactura()+factura.getFechaR();
+                    jComboBox1.addItem(nombrefactura);
 
-        for (Object item : facturas) {
-            JSONObject factura = (JSONObject) item;
-            String nombrefactura = servicio.get("Nombre Cliente").toString()+servicio.get("Codigo Cliente");
-            jComboBox1.addItem(nombreservicio);
-
-            mapArticulos.put(nombreservicio, servicio);
-        }
-
+                    mapArticulos.put(nombrefactura, factura);
+                }
+            }
+        } 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 jButton3.setVisible(true);
@@ -78,6 +130,13 @@ public class VentanaFacturacion extends javax.swing.JFrame {
 
         jLabel1.setText("Facturacion");
 
+        jComboBox1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jButton3.setVisible(false);
+
+            }
+        });
+
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +152,7 @@ public class VentanaFacturacion extends javax.swing.JFrame {
         });
 
         jButton3.setText("Anular");
+        jButton3.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,25 +248,10 @@ public class VentanaFacturacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    /**
-     * Boton para seleccionar
-     */
     private javax.swing.JButton jButton1;
-    /**
-     * Boton para agregar
-     */
     private javax.swing.JButton jButton2;
-    /**
-     * Boton para anular
-     */
     private javax.swing.JButton jButton3;
-    /**
-     * ComboBox para seleccionar 
-     */
     private javax.swing.JComboBox<String> jComboBox1;
-    /**
-     * Label para mostrar
-     */
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

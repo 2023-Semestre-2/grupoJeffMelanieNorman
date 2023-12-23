@@ -4,6 +4,14 @@
  */
 package com.mycompany.grupojeffmelanienorman;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import org.json.JSONObject;
+import org.json.simple.JSONArray;
+
 /**
  * VentanaAgregarFactura
  *
@@ -17,7 +25,36 @@ public class VentanaAgregarFactura extends javax.swing.JFrame {
      * Creates new form VentanaAgregarFactura
      */
     public VentanaAgregarFactura() {
+       
         initComponents();
+        jButton1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                JSONObject servicio=(JSONObject) jComboBox1.getSelectedItem();
+                String fecha= (String) jTextField1.getText();
+                String estado=(String) jComboBox2.getSelectedItem();
+                ManejoFacturas manejo=new ManejoFacturas();
+                try{
+                    manejo.agregarFactura(fecha, rootPaneCheckingEnabled, servicio);
+                    JOptionPane.showMessageDialog(null, "Factura agregada correctamente.", "Exito.", JOptionPane.INFORMATION_MESSAGE);
+                }catch(Exception E){
+                    JOptionPane.showMessageDialog(null, "Error al agregar factura.", "Error.", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        Mantenimiento mantenimiento = new Mantenimiento();
+        JSONArray mantenimientos = mantenimiento.listaServicios; // Asumiendo que hay un getter para obtener el JSONArray
+        Map<String, JSONObject> mapServicios = new HashMap<>();
+
+        for (Object item : mantenimientos) {
+            JSONObject servicio = (JSONObject) item;
+            ManejoDeCliente manejo=new ManejoDeCliente();
+            Cliente cliente=manejo.buscar(((Long) servicio.get("Codigo Cliente")).intValue());
+            //Cliente cliente=(Cliente) servicio.get("Cliente");
+            String nombreservicio = cliente.getNombre()+servicio.get("Codigo Cliente");
+            jComboBox1.addItem(nombreservicio);
+
+            mapServicios.put(nombreservicio, servicio);
+        }
     }
 
     /**
@@ -34,95 +71,50 @@ public class VentanaAgregarFactura extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Agregar Factura");
 
-        jLabel2.setText("Cliente:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel2.setText("Servicio de Mantenimiento:");
 
         jLabel3.setText("Fecha Recibido:");
 
         jLabel4.setText("Estado:");
 
-        jLabel5.setText("(estado)");
-
-        jLabel6.setText("Subtotal:");
-
-        jLabel7.setText("(subtotal)");
-
-        jLabel8.setText("Impuestos:");
-
-        jLabel9.setText("(impuestos)");
-
-        jLabel10.setText("Total:");
-
-        jLabel11.setText("(total)");
-
-        jLabel12.setText("colones");
-
-        jLabel13.setText("colones");
-
-        jLabel14.setText("colones");
-
         jButton1.setText("Agregar");
+
+        jTextField1.setText("(dd/mm/yyyy)");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Valido", "Anulado" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(100, 100, 100))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1)
                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,26 +127,13 @@ public class VentanaAgregarFactura extends javax.swing.JFrame {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(44, 44, 44)
+                .addGap(10, 10, 10)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel12))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel13))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -199,69 +178,13 @@ public class VentanaAgregarFactura extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    /**
-     * Boton para agregar
-     */
     private javax.swing.JButton jButton1;
-    /**
-     * ComboBox para seleccionar
-     */
     private javax.swing.JComboBox<String> jComboBox1;
-    /**
-     * Label para mostrar
-     */
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel10;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel11;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel12;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel13;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel14;
-    /**
-     * Label para mostrar
-     */
     private javax.swing.JLabel jLabel2;
-    /**
-     * Label para mostrar
-     */
     private javax.swing.JLabel jLabel3;
-    /**
-     * Label para mostrar
-     */
     private javax.swing.JLabel jLabel4;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel5;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel6;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel7;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel8;
-    /**
-     * Label para mostrar
-     */
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
