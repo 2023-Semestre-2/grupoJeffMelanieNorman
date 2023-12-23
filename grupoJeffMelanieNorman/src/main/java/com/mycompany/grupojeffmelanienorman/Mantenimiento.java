@@ -24,7 +24,7 @@ public class Mantenimiento {
      */
     public JSONArray listaServicios;
     private int ultimoCodigoServicio;
-    private static final String FILE_PATH = "grupoJeffMelanieNorman/Mantenimiento.json";
+    private static final String FILE_PATH = "Mantenimiento.json";
 
     /**
      * Constructor para la clase Mantenimiento.
@@ -120,7 +120,7 @@ public class Mantenimiento {
 
         JSONObject nuevoServicio = new JSONObject();
         nuevoServicio.put("Codigo", ultimoCodigoServicio);
-        nuevoServicio.put("Cliente", cliente);
+        //nuevoServicio.put("Cliente", cliente);
         nuevoServicio.put("Codigo Cliente", cliente.getIdCliente());
         nuevoServicio.put("Marca Bicicleta", marcaBicicleta.trim());
         nuevoServicio.put("Descripcion Bicicleta", descripcionBicicleta.trim());

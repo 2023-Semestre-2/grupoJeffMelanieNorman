@@ -44,13 +44,14 @@ public class VentanaClientes extends javax.swing.JFrame {
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 jButton3.setVisible(true);
-                        jButton4.setVisible(true);
+                jButton4.setVisible(true);
                 String selectedInfo = (String) jComboBox1.getSelectedItem();
                 if(mapClientes!=null){
                     Cliente selectedCliente = mapClientes.get(selectedInfo);
                     if(selectedCliente != null) {
                         clienteActual=selectedCliente;
                         VentanaDetalleCliente ventana=new VentanaDetalleCliente(clienteActual);
+                        ventana.setVisible(true);
                         jButton3.setVisible(true);
                         jButton4.setVisible(true);
                     }

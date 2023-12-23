@@ -43,8 +43,10 @@ public class VentanaServicioMantenimiento extends javax.swing.JFrame {
 
         for (Object item : mantenimientos) {
             JSONObject servicio = (JSONObject) item;
-            Cliente cliente=(Cliente) servicio.get("Cliente");
-            String nombreservicio = cliente.getNombre().toString()+servicio.get("Codigo Cliente");
+            ManejoDeCliente manejo=new ManejoDeCliente();
+            Cliente cliente=manejo.buscar(((Long) servicio.get("Codigo Cliente")).intValue());
+            //Cliente cliente=(Cliente) servicio.get("Cliente");
+            String nombreservicio = cliente.getNombre()+servicio.get("Codigo Cliente");
             jComboBox1.addItem(nombreservicio);
 
             mapServicios.put(nombreservicio, servicio);

@@ -61,6 +61,16 @@ public class ManejoDeCliente {
         }
     }
     
+    Cliente buscar(int id){
+        if(clientes!=null && !clientes.isEmpty()){
+            for(int i=0; i<clientes.size(); i++){
+                if(clientes.get(i).getIdCliente()==id){
+                    return clientes.get(i);
+                }
+            }
+        }
+        return null;
+    }
     /** 
      * Crea un nuevo cliente
      * @param nombre nombre del cliente 

@@ -152,7 +152,9 @@ public class VentanaAgregarServicio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -281,81 +283,24 @@ public class VentanaAgregarServicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    /**
-     * jButton1 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JButton jButton1;
-    /**
-     * jComboBox1 para seleccionar un cliente
-     */
     private javax.swing.JComboBox<String> jComboBox1;
-    /**
-     * jComboBox2 para seleccionar el estado del servicio de mantenimiento
-     */
     private javax.swing.JComboBox<String> jComboBox2;
-    /**
-     * jLabel1 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel1;
-    /**
-     * jLabel10 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel10;
-    /**
-     * jLabel11 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel2;
-    /**
-     * jLabel3 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel3;
-    /**
-     * jLabel4 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel4;
-    /**
-     * jLabel5 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel5;
-    /**
-     * jLabel6 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel6;
-    /**
-     * jLabel7 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel7;
-    /**
-     * jLabel8 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel8;
-    /**
-     * jLabel9 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JLabel jLabel9;
-    /**
-     * jTextField1 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JTextField jTextField1;
-    /**
-     * jTextField2 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JTextField jTextField2;
-    /**
-     * jTextField3 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JTextField jTextField3;
-    /**
-     * jTextField4 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JTextField jTextField4;
-    /**
-     * jTextField5 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JTextField jTextField5;
-    /**
-     * jTextField6 para agregar un servicio de mantenimiento
-     */
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

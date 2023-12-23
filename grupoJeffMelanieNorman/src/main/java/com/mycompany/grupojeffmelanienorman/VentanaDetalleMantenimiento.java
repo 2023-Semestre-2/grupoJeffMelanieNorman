@@ -60,7 +60,7 @@ public class VentanaDetalleMantenimiento extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Detalle Servicio de Mantenimiento Seleccionado");
 
@@ -122,7 +122,7 @@ public class VentanaDetalleMantenimiento extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -178,77 +178,23 @@ public class VentanaDetalleMantenimiento extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    /**
-     * jLabel1
-     */
     private javax.swing.JLabel jLabel1;
-    /**
-     * jLabel10
-     */
     private javax.swing.JLabel jLabel10;
-    /**
-     * jLabel11
-     */
     private javax.swing.JLabel jLabel11;
-    /**
-     * jLabel12
-     */
     private javax.swing.JLabel jLabel12;
-    /**
-     * jLabel13
-     */
     private javax.swing.JLabel jLabel13;
-    /**
-     * jLabel14
-     */
     private javax.swing.JLabel jLabel14;
-    /**
-     * jLabel15
-     */
     private javax.swing.JLabel jLabel15;
-    /**
-     * jLabel16
-     */
     private javax.swing.JLabel jLabel16;
-    /**
-     * jLabel17
-     */
     private javax.swing.JLabel jLabel17;
-    /**
-     * jLabel18
-     */
     private javax.swing.JLabel jLabel18;
-    /**
-     * jLabel2
-     */
     private javax.swing.JLabel jLabel2;
-    /**
-     * jLabel3
-     */
     private javax.swing.JLabel jLabel3;
-    /**
-     * jLabel4
-     */
     private javax.swing.JLabel jLabel4;
-    /**
-     * jLabel5
-     */
     private javax.swing.JLabel jLabel5;
-    /**
-     * jLabel6
-     */
     private javax.swing.JLabel jLabel6;
-    /**
-     * jLabel7
-     */
     private javax.swing.JLabel jLabel7;
-    /**
-     * jLabel8
-     */
     private javax.swing.JLabel jLabel8;
-    /**
-     * jLabel9
-     */
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
